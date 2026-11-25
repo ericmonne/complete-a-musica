@@ -1734,5 +1734,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:47:14.048Z"
+  },
+  {
+    "id": "countingcrows::accidentallyinlove",
+    "artist": "Counting Crows",
+    "track": "Accidentally In Love",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:47:22.478Z"
   }
 ]

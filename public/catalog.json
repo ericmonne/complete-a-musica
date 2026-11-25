@@ -1558,5 +1558,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:23:04.474Z"
+  },
+  {
+    "id": "bringmetolife::evanescence",
+    "artist": "Bring Me to Life",
+    "track": "Evanescence",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:26:27.509Z"
   }
 ]

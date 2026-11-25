@@ -2218,5 +2218,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:19:38.154Z"
+  },
+  {
+    "id": "otisredding::tryalittletenderness",
+    "artist": "Otis Redding",
+    "track": "Try a Little Tenderness",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:20:28.625Z"
   }
 ]

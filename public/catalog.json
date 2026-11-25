@@ -3425,5 +3425,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:48:42.013Z"
+  },
+  {
+    "id": "nickelback::nickelbackrockstar",
+    "artist": "Nickelback",
+    "track": "Nickelback - Rockstar",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:48:57.094Z"
   }
 ]

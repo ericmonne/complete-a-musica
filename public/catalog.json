@@ -1536,5 +1536,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:21:55.351Z"
+  },
+  {
+    "id": "thelostbros::underthesea",
+    "artist": "The Lost Bros",
+    "track": "Under the Sea",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:22:30.334Z"
   }
 ]

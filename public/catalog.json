@@ -2086,5 +2086,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:08:22.190Z"
+  },
+  {
+    "id": "bohemianrhapsodyqueen::bohemianrhapsodyqueen",
+    "artist": "Bohemian Rhapsody - Queen",
+    "track": "Bohemian Rhapsody - Queen",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:08:32.703Z"
   }
 ]

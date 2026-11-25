@@ -3535,5 +3535,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:51:29.528Z"
+  },
+  {
+    "id": "vanillasky::umbrella",
+    "artist": "Vanilla Sky",
+    "track": "Umbrella",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:52:02.286Z"
   }
 ]

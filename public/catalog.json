@@ -1822,5 +1822,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T14:57:42.650Z"
+  },
+  {
+    "id": "likeaprayer::madonna",
+    "artist": "Like a Prayer",
+    "track": "Madonna",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T14:57:54.493Z"
   }
 ]

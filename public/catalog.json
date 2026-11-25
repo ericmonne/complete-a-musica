@@ -1602,5 +1602,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:30:57.242Z"
+  },
+  {
+    "id": "rageagainstthemachine::killinginthename",
+    "artist": "Rage Against the Machine",
+    "track": "Killing in the Name",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:35:43.497Z"
   }
 ]

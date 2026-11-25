@@ -3348,5 +3348,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:07:17.174Z"
+  },
+  {
+    "id": "lsjack::carla",
+    "artist": "LS Jack",
+    "track": "Carla",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:08:39.614Z"
   }
 ]

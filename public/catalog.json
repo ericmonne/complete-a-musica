@@ -3238,5 +3238,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:46:34.738Z"
+  },
+  {
+    "id": "gwenstefani::hollabackgirl",
+    "artist": "Gwen Stefani",
+    "track": "Hollaback Girl",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:47:36.888Z"
   }
 ]

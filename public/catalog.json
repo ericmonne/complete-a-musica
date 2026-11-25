@@ -3667,5 +3667,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T19:03:45.516Z"
+  },
+  {
+    "id": "strike::ojogovirou",
+    "artist": "Strike",
+    "track": "O Jogo Virou",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T19:03:53.273Z"
   }
 ]

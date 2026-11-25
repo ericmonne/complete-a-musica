@@ -1965,5 +1965,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:00:42.722Z"
+  },
+  {
+    "id": "seal::kissfromarose",
+    "artist": "Seal",
+    "track": "Kiss from a rose",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:00:49.547Z"
   }
 ]

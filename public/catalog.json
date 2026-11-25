@@ -4129,5 +4129,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T20:54:47.759Z"
+  },
+  {
+    "id": "titas::policia",
+    "artist": "TITÃS",
+    "track": "Policia",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:55:09.337Z"
   }
 ]

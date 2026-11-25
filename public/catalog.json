@@ -3194,5 +3194,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:45:04.212Z"
+  },
+  {
+    "id": "foofighters::foofighterseverlong",
+    "artist": "Foo Fighters",
+    "track": "Foo Fighters - Everlong",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:46:05.760Z"
   }
 ]

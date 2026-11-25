@@ -3744,5 +3744,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T19:09:12.455Z"
+  },
+  {
+    "id": "systemofadowntoxicity::toxicity",
+    "artist": "SYSTEM OF A DOWN - Toxicity",
+    "track": "Toxicity",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T19:12:24.000Z"
   }
 ]

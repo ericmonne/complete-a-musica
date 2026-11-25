@@ -4360,5 +4360,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T21:03:46.034Z"
+  },
+  {
+    "id": "gilbertogil::vamosfugir",
+    "artist": "Gilberto Gil",
+    "track": "Vamos Fugir",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T21:03:51.866Z"
   }
 ]

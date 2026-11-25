@@ -3964,5 +3964,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T20:46:21.193Z"
+  },
+  {
+    "id": "hanoihanoi::totalmentedemais",
+    "artist": "Hanoi Hanoi",
+    "track": "Totalmente Demais",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:49:22.726Z"
   }
 ]

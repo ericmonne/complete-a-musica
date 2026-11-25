@@ -3678,5 +3678,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T19:03:53.273Z"
+  },
+  {
+    "id": "thestrokes::lastnite",
+    "artist": "The Strokes",
+    "track": "Last Nite",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T19:05:24.069Z"
   }
 ]

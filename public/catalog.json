@@ -1580,5 +1580,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:29:55.390Z"
+  },
+  {
+    "id": "systemofadown::chopsuey",
+    "artist": "System Of A Down",
+    "track": "Chop Suey!",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:30:13.811Z"
   }
 ]

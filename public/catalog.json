@@ -2974,5 +2974,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:37:50.985Z"
+  },
+  {
+    "id": "bobsinclar::lovegeneration",
+    "artist": "Bob Sinclar",
+    "track": "Love Generation",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:38:24.688Z"
   }
 ]

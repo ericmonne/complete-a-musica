@@ -2042,5 +2042,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:04:07.038Z"
+  },
+  {
+    "id": "fleetwoodmac::fleetwoodmacdreams",
+    "artist": "Fleetwood Mac",
+    "track": "Fleetwood Mac - Dreams",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:04:41.676Z"
   }
 ]

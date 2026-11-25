@@ -2361,5 +2361,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:26:14.946Z"
+  },
+  {
+    "id": "lynyrdskynyrd::sweethomealabama",
+    "artist": "Lynyrd Skynyrd",
+    "track": "Sweet Home Alabama",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:27:42.258Z"
   }
 ]

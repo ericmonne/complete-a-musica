@@ -109,15 +109,23 @@ describe('DesktopApp Catalog Manager', () => {
 
       await user.clear(artistInput);
       await user.clear(trackInput);
-      await user.type(artistInput, 'Gilberto Gil');
-      await user.type(trackInput, 'Aquele Abraço');
+      await user.selectOptions(screen.getByLabelText(/^Idioma$/i), 'es');
+      await user.type(artistInput, 'Soda Stereo');
+      await user.type(trackInput, 'De Música Ligera');
       expect(addBtn).toBeEnabled();
 
       await user.click(addBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Aquele Abraço')).toBeInTheDocument();
+        expect(screen.getByText('De Música Ligera')).toBeInTheDocument();
       });
+
+      await user.selectOptions(
+        screen.getByLabelText(/Filtrar por categoria/i),
+        'es'
+      );
+      expect(screen.getByText('De Música Ligera')).toBeInTheDocument();
+      expect(screen.queryByText('Tempo Perdido')).not.toBeInTheDocument();
 
       const putCall = fetchMock.mock.calls.find(
         (call) =>
@@ -126,6 +134,7 @@ describe('DesktopApp Catalog Manager', () => {
       );
       expect(putCall).toBeDefined();
       expect(ghCatalog).toHaveLength(2);
+      expect(ghCatalog[1].lang).toBe('es');
     });
   });
 

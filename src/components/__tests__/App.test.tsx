@@ -46,6 +46,7 @@ describe('Complete a Música App integration', () => {
 
     const input = await screen.findByLabelText(/Digite uma palavra da música/i);
     expect(input).toBeEnabled();
+    expect(screen.getByRole('button', { name: 'Espanhol' })).toBeInTheDocument();
 
     // Title and artist must not be exposed
     expect(screen.queryByText(/Música Secreta Teste/i)).not.toBeInTheDocument();

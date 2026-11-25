@@ -2504,5 +2504,255 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:09:00.715Z"
+  },
+  {
+    "id": "sodastereo::demusicaligera",
+    "artist": "Soda Stereo",
+    "track": "De Música Ligera",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "sodastereo::persianaamericana",
+    "artist": "Soda Stereo",
+    "track": "Persiana Americana",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "gustavocerati::crimen",
+    "artist": "Gustavo Cerati",
+    "track": "Crimen",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "shakira::estoyaqui",
+    "artist": "Shakira",
+    "track": "Estoy Aquí",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "shakira::antologia",
+    "artist": "Shakira",
+    "track": "Antología",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "shakira::inevitable",
+    "artist": "Shakira",
+    "track": "Inevitable",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "mana::rayandoelsol",
+    "artist": "Maná",
+    "track": "Rayando el Sol",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "mana::oyemiamor",
+    "artist": "Maná",
+    "track": "Oye Mi Amor",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "mana::labioscompartidos",
+    "artist": "Maná",
+    "track": "Labios Compartidos",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "juanes::adioslepido",
+    "artist": "Juanes",
+    "track": "A Dios le Pido",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "juanes::lacamisanegra",
+    "artist": "Juanes",
+    "track": "La Camisa Negra",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "alejandrosanz::corazonpartio",
+    "artist": "Alejandro Sanz",
+    "track": "Corazón Partío",
+    "lang": "es",
+    "tags": [
+      "es",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "luismiguel::laincondicional",
+    "artist": "Luis Miguel",
+    "track": "La Incondicional",
+    "lang": "es",
+    "tags": [
+      "es",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "luismiguel::ahoratepuedesmarchar",
+    "artist": "Luis Miguel",
+    "track": "Ahora Te Puedes Marchar",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "luismiguel::besamemucho",
+    "artist": "Luis Miguel",
+    "track": "Bésame Mucho",
+    "lang": "es",
+    "tags": [
+      "es",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "enanitosverdes::lamentoboliviano",
+    "artist": "Enanitos Verdes",
+    "track": "Lamento Boliviano",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "hombresg::devuelvemeamichica",
+    "artist": "Hombres G",
+    "track": "Devuélveme a mi chica",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "julietavenegas::limonysal",
+    "artist": "Julieta Venegas",
+    "track": "Limón y Sal",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "julietavenegas::mevoy",
+    "artist": "Julieta Venegas",
+    "track": "Me Voy",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "ritchievalens::labamba",
+    "artist": "Ritchie Valens",
+    "track": "La Bamba",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "manuchao::megustastu",
+    "artist": "Manu Chao",
+    "track": "Me Gustas Tú",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "natalialafourcade::hastalaraiz",
+    "artist": "Natalia Lafourcade",
+    "track": "Hasta la Raíz",
+    "lang": "es",
+    "tags": [
+      "es",
+      "classics"
+    ],
+    "addedAt": "2026-11-25T17:10:06.254Z"
   }
 ]

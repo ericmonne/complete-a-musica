@@ -113,4 +113,24 @@ describe('parseLyrics', () => {
     expect(parsed.keyToSegmentIds['heavens']).toEqual([7]);
     expect(parsed.keyToSegmentIds['is']).toBeUndefined();
   });
+
+  it("handles Spanish punctuation (¿, ¡), ñ, and colloquial pa' / pa'l contractions", () => {
+    const parsed = parseLyrics("¿Cómo estás, niño? ¡Pa' siempre pa'l mar!");
+    expect(parsed.keyToSegmentIds['como']).toEqual([0]);
+    expect(parsed.keyToSegmentIds['estas']).toEqual([1]);
+    expect(parsed.keyToSegmentIds['nino']).toEqual([2]);
+    expect(parsed.keyToSegmentIds['para']).toEqual([3, 5]);
+    expect(parsed.keyToSegmentIds['pa']).toEqual([3, 5]);
+    expect(parsed.keyToSegmentIds['siempre']).toEqual([4]);
+    expect(parsed.keyToSegmentIds['el']).toEqual([6]);
+    expect(parsed.keyToSegmentIds['mar']).toEqual([7]);
+
+    const compounds = getCompounds("¿Cómo pa'l");
+    expect(compounds[0][0]).toEqual({ type: 'punct', text: '¿' });
+    expect(compounds[1]).toEqual([
+      { type: 'part', segmentId: 1, text: 'pa' },
+      { type: 'punct', text: "'" },
+      { type: 'part', segmentId: 2, text: 'l' },
+    ]);
+  });
 });

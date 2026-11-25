@@ -174,7 +174,7 @@ cp .env.example .env
      "addedAt": "2026-11-25T00:00:00.000Z"
    }
    ```
-   *(Em `tags`, utilize apenas `"pt"`, `"en"`, `"rock_pop"` e/ou `"classics"`, garantindo que a música não esteja duplicada e tenha letra válida no LRCLIB).*
+   *(Em `tags`, utilize apenas `"pt"`, `"en"`, `"es"`, `"rock_pop"` e/ou `"classics"`, garantindo que a música não esteja duplicada e tenha letra válida no LRCLIB).*
 2. Abra um **Pull Request** contra `master`.
 
 #### Via App Desktop (mantenedores / curadores autorizados)

@@ -1,4 +1,6 @@
-export type CategoryId = 'all' | 'pt' | 'en' | 'rock_pop' | 'classics';
+export type SongLanguage = 'pt' | 'en' | 'es';
+
+export type CategoryId = 'all' | 'pt' | 'en' | 'es' | 'rock_pop' | 'classics';
 
 export type ThemeMode = 'light' | 'dark';
 
@@ -31,7 +33,7 @@ export interface SongData {
   title: string;
   artist: string;
   album?: string;
-  lang: 'pt' | 'en';
+  lang: SongLanguage;
   lyrics: string;
   source: 'lrclib' | 'offline';
   drawMode?: 'catalog' | 'artist';
@@ -40,7 +42,7 @@ export interface SongData {
 export interface SeedTrack {
   artist: string;
   track: string;
-  lang: 'pt' | 'en';
+  lang: SongLanguage;
   tags: Exclude<CategoryId, 'all'>[];
 }
 

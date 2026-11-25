@@ -3,7 +3,7 @@ import {
   normalizeWord,
   stripEditionSuffix,
 } from '../engine/normalize';
-import { CatalogTrack, CategoryId } from '../types/game';
+import { CatalogTrack, CategoryId, SongLanguage } from '../types/game';
 
 const GITHUB_API_BASE = 'https://api.github.com';
 const CATALOG_FILE_PATH = 'public/catalog.json';
@@ -51,7 +51,7 @@ export interface GitHubCatalogSnapshot {
 export interface AddTrackInput {
   artist: string;
   track: string;
-  lang: 'pt' | 'en';
+  lang: SongLanguage;
   tags: Exclude<CategoryId, 'all'>[];
 }
 

@@ -6,6 +6,7 @@ const LEADING_SLANG_APO_REGEX =
 const STANDALONE_N_REGEX = /^'n'$/i;
 const TRAILING_IN_REGEX = /^([\p{L}]{2,}in)'$/iu;
 const TRAILING_PLURAL_S_REGEX = /^([\p{L}]{2,}s)'$/iu;
+const TRAILING_PA_REGEX = /^pa'$/i;
 const ALPHA_NUM_CHAR_REGEX = /[\p{L}\p{N}]/u;
 
 const STRICT_S_CONTRACTION_BASES = new Set([
@@ -93,12 +94,13 @@ function stripOuterPunctuation(chunk: string): {
     core = core.slice(1);
   }
 
-  // Extract trailing punctuation while preserving meaningful trailing apostrophes (walkin', boys', 'n')
+  // Extract trailing punctuation while preserving meaningful trailing apostrophes (walkin', boys', pa', 'n')
   while (core.length > 0 && !ALPHA_NUM_CHAR_REGEX.test(core[core.length - 1])) {
     if (
       core[core.length - 1] === "'" &&
       (TRAILING_IN_REGEX.test(core) ||
         TRAILING_PLURAL_S_REGEX.test(core) ||
+        TRAILING_PA_REGEX.test(core) ||
         STANDALONE_N_REGEX.test(core))
     ) {
       break;
@@ -246,6 +248,27 @@ class TokenizerBuilder {
       return [
         { type: 'part', segmentId: segId, text: stem },
         { type: 'punct', text: "'" },
+      ];
+    }
+
+    // Spanish colloquial contractions: pa' (para), pa'l (para el)
+    const paMatch = word.match(/^(pa)'$/i);
+    if (paMatch) {
+      const segId = this.addSegment(['para', 'pa']);
+      return [
+        { type: 'part', segmentId: segId, text: paMatch[1] },
+        { type: 'punct', text: "'" },
+      ];
+    }
+
+    const palMatch = word.match(/^(pa)'(l)$/i);
+    if (palMatch) {
+      const firstId = this.addSegment(['para', 'pa']);
+      const secondId = this.addSegment(['el', 'al', 'pal']);
+      return [
+        { type: 'part', segmentId: firstId, text: palMatch[1] },
+        { type: 'punct', text: "'" },
+        { type: 'part', segmentId: secondId, text: palMatch[2] },
       ];
     }
 

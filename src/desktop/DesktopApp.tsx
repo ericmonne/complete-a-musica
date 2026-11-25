@@ -3,13 +3,14 @@ import { cleanLyrics } from '../engine/lyricsCleaner';
 import { canonicalSongKey, normalizeWord } from '../engine/normalize';
 import {
   countLyricsWords,
+  inferSongLanguage,
   LRCLIB_SEARCH_URL,
   LrclibTrackRecord,
   MAX_LYRICS_WORDS,
   MIN_LYRICS_WORDS,
   queryLrclibRecords,
 } from '../services/lrclib';
-import { CatalogTrack, CategoryId, ThemeMode } from '../types/game';
+import { CatalogTrack, CategoryId, SongLanguage, ThemeMode } from '../types/game';
 import {
   addTrackToGitHubCatalog,
   DuplicateCatalogError,
@@ -60,7 +61,7 @@ interface LrclibSearchCandidate {
   playable: boolean;
   instrumental: boolean;
   cleanedLyrics: string;
-  lang: 'pt' | 'en';
+  lang: SongLanguage;
   tags: ExtraTag[];
 }
 
@@ -158,7 +159,7 @@ export function DesktopApp() {
   // Manual form state
   const [manualArtist, setManualArtist] = useState('');
   const [manualTrack, setManualTrack] = useState('');
-  const [manualLang, setManualLang] = useState<'pt' | 'en'>('pt');
+  const [manualLang, setManualLang] = useState<SongLanguage>('pt');
   const [manualTags, setManualTags] = useState<ExtraTag[]>(['rock_pop']);
   const [isAddingManual, setIsAddingManual] = useState(false);
 
@@ -296,7 +297,7 @@ export function DesktopApp() {
   const postTrackToCatalog = async (payload: {
     artist: string;
     track: string;
-    lang: 'pt' | 'en';
+    lang: SongLanguage;
     tags: ExtraTag[];
   }): Promise<boolean> => {
     setStatusFeedback(null);
@@ -421,7 +422,7 @@ export function DesktopApp() {
           !instrumental &&
           wordCount >= MIN_LYRICS_WORDS &&
           wordCount <= MAX_LYRICS_WORDS;
-        const lang: 'pt' | 'en' = /[ãõçáéíóúâêôà]/i.test(cleanedLyrics) ? 'pt' : 'en';
+        const lang: SongLanguage = inferSongLanguage(cleanedLyrics);
 
         return {
           key: `${rec.id ?? index}-${canonicalSongKey(artist, track)}`,
@@ -899,12 +900,13 @@ export function DesktopApp() {
                         onChange={(e) =>
                           handleUpdateLrclibCandidate(item.key, (prev) => ({
                             ...prev,
-                            lang: e.target.value as 'pt' | 'en',
+                            lang: e.target.value as SongLanguage,
                           }))
                         }
                       >
                         <option value="pt">Português</option>
                         <option value="en">Inglês</option>
+                        <option value="es">Espanhol</option>
                       </select>
 
                       <label className="tag-check">
@@ -1020,10 +1022,11 @@ export function DesktopApp() {
                     id="manual-lang-select"
                     className="desk-select"
                     value={manualLang}
-                    onChange={(e) => setManualLang(e.target.value as 'pt' | 'en')}
+                    onChange={(e) => setManualLang(e.target.value as SongLanguage)}
                   >
                     <option value="pt">Português</option>
                     <option value="en">Inglês</option>
+                    <option value="es">Espanhol</option>
                   </select>
                 </div>
 
@@ -1100,6 +1103,7 @@ export function DesktopApp() {
                 <option value="all">Todas</option>
                 <option value="pt">Português</option>
                 <option value="en">Inglês</option>
+                <option value="es">Espanhol</option>
                 <option value="rock_pop">Rock & Pop</option>
                 <option value="classics">Clássicos & Trilhas</option>
               </select>

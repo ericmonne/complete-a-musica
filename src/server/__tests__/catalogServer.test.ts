@@ -131,6 +131,24 @@ describe('Catalog API Server & Duplicate Prevention', () => {
     const created = (await createRes.json()) as { total: number; track: { id: string } };
     expect(created.total).toBe(2);
 
+    // Spanish song (lang: 'es')
+    const spanishRes = await fetch(`${baseUrl}/api/catalog`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${ADMIN_KEY}`,
+      },
+      body: JSON.stringify({
+        artist: 'Soda Stereo',
+        track: 'De Música Ligera',
+        lang: 'es',
+        tags: ['es', 'rock_pop'],
+      }),
+    });
+    expect(spanishRes.status).toBe(201);
+    const spanishData = (await spanishRes.json()) as { total: number };
+    expect(spanishData.total).toBe(3);
+
     // Exact duplicate
     const dupExact = await fetch(`${baseUrl}/api/catalog`, {
       method: 'POST',
@@ -181,7 +199,7 @@ describe('Catalog API Server & Duplicate Prevention', () => {
 
     const listRes = await fetch(`${baseUrl}/api/catalog`);
     const listData = (await listRes.json()) as { total: number };
-    expect(listData.total).toBe(2);
+    expect(listData.total).toBe(3);
   });
 
   it('requires auth for DELETE /api/catalog/:id and deletes when authorized', async () => {

@@ -1,6 +1,6 @@
 import { cleanLyrics } from '../engine/lyricsCleaner';
 import { canonicalSongKey, normalizeWord } from '../engine/normalize';
-import { CategoryId, SeedTrack, SongData } from '../types/game';
+import { CategoryId, SeedTrack, SongData, SongLanguage } from '../types/game';
 import { EMERGENCY_OFFLINE_SONGS, SEED_TRACKS } from './seedCatalog';
 
 export const LRCLIB_SEARCH_URL = 'https://lrclib.net/api/search';
@@ -83,8 +83,24 @@ function shuffle<T>(items: T[]): T[] {
   return copy;
 }
 
-function inferLanguage(cleanedLyrics: string): 'pt' | 'en' {
-  return /[ãõçáéíóúâêôà]/i.test(cleanedLyrics) ? 'pt' : 'en';
+export function inferSongLanguage(cleanedLyrics: string): SongLanguage {
+  if (
+    /[ãõçêôà]/i.test(cleanedLyrics) ||
+    /\b(você|não|coração|então|também|ninguém|alguém|minha)\b/i.test(cleanedLyrics)
+  ) {
+    return 'pt';
+  }
+  if (
+    /[ñ¿¡]/i.test(cleanedLyrics) ||
+    /\b(corazón|también|siempre|quiero|puedo|tengo|estoy|eres|porque|cuando|dónde|qué|cómo|más|aquí|así|sueño|mañana|contigo|conmigo)\b/i.test(
+      cleanedLyrics
+    ) ||
+    (/[áéíóú]/i.test(cleanedLyrics) &&
+      /\b(el|los|las|una|del|pero|yo|tú|sin|con)\b/i.test(cleanedLyrics))
+  ) {
+    return 'es';
+  }
+  return 'en';
 }
 
 function scoreBaseRecord(
@@ -455,7 +471,7 @@ export async function fetchRandomSongByArtist(
       title,
       artist,
       album: record.albumName?.trim() || undefined,
-      lang: inferLanguage(cleanedLyrics),
+      lang: inferSongLanguage(cleanedLyrics),
       lyrics: cleanedLyrics,
       source: 'lrclib',
       drawMode: 'artist',

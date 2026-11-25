@@ -5,7 +5,7 @@ import http from 'node:http';
 import path from 'node:path';
 import { canonicalSongKey, normalizeWord, stripEditionSuffix } from './catalogUtils.mjs';
 
-const ALLOWED_TAGS = new Set(['pt', 'en', 'rock_pop', 'classics']);
+const ALLOWED_TAGS = new Set(['pt', 'en', 'es', 'rock_pop', 'classics']);
 const MAX_BODY_BYTES = 64 * 1024;
 
 const MIME_TYPES = {
@@ -224,11 +224,15 @@ export function createCatalogServer({ catalogPath, adminKey, staticDir }) {
 
           const rawArtist = typeof body.artist === 'string' ? body.artist.trim() : '';
           const rawTrack = typeof body.track === 'string' ? body.track.trim() : '';
-          const lang = body.lang === 'pt' || body.lang === 'en' ? body.lang : null;
+          const lang =
+            body.lang === 'pt' || body.lang === 'en' || body.lang === 'es'
+              ? body.lang
+              : null;
 
           if (!rawArtist || !rawTrack || !lang) {
             sendJson(res, 400, {
-              error: 'Campos obrigatórios inválidos: informe artista, música e idioma (pt/en).',
+              error:
+                'Campos obrigatórios inválidos: informe artista, música e idioma (pt/en/es).',
             });
             return;
           }

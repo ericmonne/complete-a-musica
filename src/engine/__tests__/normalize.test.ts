@@ -11,6 +11,9 @@ describe('normalizeWord', () => {
     expect(normalizeWord('Águas')).toBe('aguas');
     expect(normalizeWord('Açaí')).toBe('acai');
     expect(normalizeWord('garçon')).toBe('garcon');
+    expect(normalizeWord('niño')).toBe('nino');
+    expect(normalizeWord('pingüino')).toBe('pinguino');
+    expect(normalizeWord('¿Corazón?')).toBe('corazon');
   });
 
   it('strips punctuation while keeping letters and digits', () => {

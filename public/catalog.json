@@ -3205,5 +3205,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:46:05.760Z"
+  },
+  {
+    "id": "foofighters::foofightersbestofyou",
+    "artist": "Foo Fighters",
+    "track": "Foo Fighters - Best Of You",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:46:13.438Z"
   }
 ]

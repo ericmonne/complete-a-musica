@@ -2809,5 +2809,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:26:28.809Z"
+  },
+  {
+    "id": "apollo440::stoptherock",
+    "artist": "Apollo 440",
+    "track": "Stop the Rock",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:26:47.058Z"
   }
 ]

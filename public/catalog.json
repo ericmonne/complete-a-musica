@@ -3733,5 +3733,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T19:09:02.391Z"
+  },
+  {
+    "id": "systemofadown::byob",
+    "artist": "System Of A Down",
+    "track": "BYOB",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T19:09:12.455Z"
   }
 ]

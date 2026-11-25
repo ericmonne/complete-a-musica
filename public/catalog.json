@@ -3502,5 +3502,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:50:32.682Z"
+  },
+  {
+    "id": "rickymartin::livinlavidaloca",
+    "artist": "Ricky Martin",
+    "track": "Livin’ la vida loca",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:50:59.714Z"
   }
 ]

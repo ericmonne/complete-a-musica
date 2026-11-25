@@ -2493,5 +2493,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:08:43.686Z"
+  },
+  {
+    "id": "thewhitestripes::sevennationarmy",
+    "artist": "The White Stripes",
+    "track": "Seven Nation Army",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:09:00.715Z"
   }
 ]

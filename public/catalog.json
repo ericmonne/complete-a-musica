@@ -1591,5 +1591,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:30:13.811Z"
+  },
+  {
+    "id": "beachboys::godonlyknows",
+    "artist": "Beach Boys",
+    "track": "God Only Knows",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:30:57.242Z"
   }
 ]

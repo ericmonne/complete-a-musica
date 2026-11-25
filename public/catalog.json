@@ -3876,5 +3876,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T20:43:59.698Z"
+  },
+  {
+    "id": "rpm::olhar43",
+    "artist": "RPM",
+    "track": "Olhar 43",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:44:14.920Z"
   }
 ]

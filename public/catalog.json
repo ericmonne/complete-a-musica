@@ -1932,5 +1932,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:00:06.049Z"
+  },
+  {
+    "id": "tatu::allthethingsshesaid",
+    "artist": "t.A.T.u.",
+    "track": "All The Things She Said",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:00:12.976Z"
   }
 ]

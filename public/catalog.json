@@ -3018,5 +3018,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:39:47.330Z"
+  },
+  {
+    "id": "cher::believe",
+    "artist": "Cher",
+    "track": "Believe",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:40:07.136Z"
   }
 ]

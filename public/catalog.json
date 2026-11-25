@@ -3392,5 +3392,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:47:34.853Z"
+  },
+  {
+    "id": "neyo::closer",
+    "artist": "Ne-Yo",
+    "track": "Closer",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:48:25.015Z"
   }
 ]

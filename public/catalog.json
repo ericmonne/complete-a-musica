@@ -3227,5 +3227,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:46:24.146Z"
+  },
+  {
+    "id": "takemeout::franzferdinand",
+    "artist": "Take Me Out",
+    "track": "Franz Ferdinand",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:46:34.738Z"
   }
 ]

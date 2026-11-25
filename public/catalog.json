@@ -1701,5 +1701,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:45:22.799Z"
+  },
+  {
+    "id": "kellyclarkson::becauseofyou",
+    "artist": "Kelly Clarkson",
+    "track": "Because Of You",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:45:53.806Z"
   }
 ]

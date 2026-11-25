@@ -1525,5 +1525,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:21:22.672Z"
+  },
+  {
+    "id": "naomiscott::awholenewworld",
+    "artist": "Naomi Scott",
+    "track": "A Whole New World",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:21:55.351Z"
   }
 ]

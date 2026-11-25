@@ -2930,5 +2930,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:36:52.707Z"
+  },
+  {
+    "id": "blink182::therockshow",
+    "artist": "blink‐182",
+    "track": "The Rock Show",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:37:02.673Z"
   }
 ]

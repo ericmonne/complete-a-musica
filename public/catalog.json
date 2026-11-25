@@ -3062,5 +3062,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:40:55.285Z"
+  },
+  {
+    "id": "daftpunk::daftpunkaroundtheworld",
+    "artist": "Daft Punk",
+    "track": "Daft Punk - Around The World",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:41:34.806Z"
   }
 ]

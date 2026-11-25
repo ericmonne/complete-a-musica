@@ -3788,5 +3788,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T19:13:45.147Z"
+  },
+  {
+    "id": "thewanted::gladyoucame",
+    "artist": "The Wanted",
+    "track": "Glad You Came",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:40:25.710Z"
   }
 ]

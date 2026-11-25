@@ -2097,5 +2097,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:08:32.703Z"
+  },
+  {
+    "id": "chuckberry::johnnybgoode",
+    "artist": "Chuck Berry",
+    "track": "Johnny B Goode",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:08:52.074Z"
   }
 ]

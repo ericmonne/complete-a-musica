@@ -2174,5 +2174,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:12:33.028Z"
+  },
+  {
+    "id": "therollingstones::sympathyforthedevil",
+    "artist": "The Rolling Stones",
+    "track": "Sympathy for the Devil",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:12:44.804Z"
   }
 ]

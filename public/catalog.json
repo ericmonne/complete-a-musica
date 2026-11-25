@@ -1833,5 +1833,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T14:57:54.493Z"
+  },
+  {
+    "id": "themamasthepapas::californiadreamin",
+    "artist": "The Mamas & the Papas",
+    "track": "California Dreamin’",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T14:58:11.642Z"
   }
 ]

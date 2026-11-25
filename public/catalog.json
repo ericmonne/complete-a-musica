@@ -3337,5 +3337,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:07:07.408Z"
+  },
+  {
+    "id": "ladygaga::badromance",
+    "artist": "Lady Gaga",
+    "track": "Bad Romance",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:07:17.174Z"
   }
 ]

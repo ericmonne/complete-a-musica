@@ -2031,5 +2031,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:03:53.768Z"
+  },
+  {
+    "id": "thebeatles::strawberryfieldsforever",
+    "artist": "The Beatles",
+    "track": "Strawberry Fields Forever",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:04:07.038Z"
   }
 ]

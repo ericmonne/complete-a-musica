@@ -4272,5 +4272,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T21:00:12.036Z"
+  },
+  {
+    "id": "charliebrownjr::paporeto",
+    "artist": "Charlie Brown Jr",
+    "track": "Papo Reto",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T21:00:19.521Z"
   }
 ]

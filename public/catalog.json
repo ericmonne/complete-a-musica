@@ -3645,5 +3645,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T19:00:22.730Z"
+  },
+  {
+    "id": "sixpencenonericher::kissme",
+    "artist": "Sixpence None Richer",
+    "track": "Kiss Me",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T19:01:30.269Z"
   }
 ]

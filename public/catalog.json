@@ -2251,5 +2251,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:22:04.360Z"
+  },
+  {
+    "id": "yoursong::eltonjohn",
+    "artist": "Your Song",
+    "track": "Elton John",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:22:11.621Z"
   }
 ]

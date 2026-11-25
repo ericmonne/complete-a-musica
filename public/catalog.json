@@ -3249,5 +3249,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:47:36.888Z"
+  },
+  {
+    "id": "iconapop::iloveit",
+    "artist": "Icona Pop",
+    "track": "I Love It",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:47:57.197Z"
   }
 ]

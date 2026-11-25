@@ -1866,5 +1866,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T14:58:45.288Z"
+  },
+  {
+    "id": "tracychapman::fastcar",
+    "artist": "Tracy Chapman",
+    "track": "Fast Car",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T14:59:06.848Z"
   }
 ]

@@ -1921,5 +1921,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T14:59:58.027Z"
+  },
+  {
+    "id": "savagegarden::crashandburn",
+    "artist": "Savage Garden",
+    "track": "Crash and Burn",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:00:06.049Z"
   }
 ]

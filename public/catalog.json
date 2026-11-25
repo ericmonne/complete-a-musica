@@ -2842,5 +2842,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:27:12.659Z"
+  },
+  {
+    "id": "avicii::aviciilevels",
+    "artist": "Avicii",
+    "track": "Avicii - Levels",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:27:50.639Z"
   }
 ]

@@ -10,7 +10,7 @@ const CATALOG_TIMEOUT_MS = 3000;
 const PLAYED_STORAGE_KEY = 'complete-musica-played';
 const ARTIST_PLAYED_STORAGE_KEY = 'complete-musica-artist-played';
 export const MIN_LYRICS_WORDS = 25;
-export const MAX_LYRICS_WORDS = 650;
+export const MAX_LYRICS_WORDS = 1000;
 const MAX_SEED_ATTEMPTS = 4;
 
 const NON_STUDIO_REGEX =

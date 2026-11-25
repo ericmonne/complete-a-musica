@@ -2405,5 +2405,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:28:21.561Z"
+  },
+  {
+    "id": "eurythmics::sweetdreamsaremadeofthese",
+    "artist": "Eurythmics",
+    "track": "Sweet Dreams Are Made of These",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:28:44.808Z"
   }
 ]

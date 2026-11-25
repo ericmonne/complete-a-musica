@@ -1789,5 +1789,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T14:25:22.806Z"
+  },
+  {
+    "id": "depechemode::enjoythesilence",
+    "artist": "Depeche Mode",
+    "track": "Enjoy The Silence",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T14:55:28.853Z"
   }
 ]

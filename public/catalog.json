@@ -1668,5 +1668,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:41:32.257Z"
+  },
+  {
+    "id": "nirvana::nirvanasmellsliketeenspirit",
+    "artist": "Nirvana",
+    "track": "Nirvana - Smells Like Teen Spirit",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:42:18.563Z"
   }
 ]

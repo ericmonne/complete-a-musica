@@ -2229,5 +2229,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:20:28.625Z"
+  },
+  {
+    "id": "michaeljackson::michaeljacksonbad",
+    "artist": "Michael Jackson",
+    "track": "Michael Jackson - Bad",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:20:54.781Z"
   }
 ]

@@ -1624,5 +1624,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:36:44.104Z"
+  },
+  {
+    "id": "gigidagostino::lamourtoujours",
+    "artist": "Gigi D'Agostino",
+    "track": "L'Amour Toujours",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:37:21.204Z"
   }
 ]

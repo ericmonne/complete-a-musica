@@ -2339,5 +2339,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:25:29.756Z"
+  },
+  {
+    "id": "tearsforfears::shout",
+    "artist": "Tears For Fears",
+    "track": "Shout",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:26:06.193Z"
   }
 ]

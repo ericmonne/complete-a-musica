@@ -2394,5 +2394,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:28:14.147Z"
+  },
+  {
+    "id": "u2::sundaybloodysunday",
+    "artist": "U2",
+    "track": "Sunday Bloody Sunday",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:28:21.561Z"
   }
 ]

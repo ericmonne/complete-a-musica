@@ -2240,5 +2240,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:20:54.781Z"
+  },
+  {
+    "id": "rollingstones::icantgetnosatisfaction",
+    "artist": "Rolling Stones",
+    "track": "(I Can't Get No) Satisfaction",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:22:04.360Z"
   }
 ]

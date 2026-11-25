@@ -1954,5 +1954,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:00:31.637Z"
+  },
+  {
+    "id": "christinaaguilera::genieinabottle",
+    "artist": "Christina Aguilera",
+    "track": "Genie In A Bottle",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:00:42.722Z"
   }
 ]

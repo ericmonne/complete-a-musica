@@ -2306,5 +2306,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:23:16.184Z"
+  },
+  {
+    "id": "aerosmith::walkthisway",
+    "artist": "Aerosmith",
+    "track": "Walk This Way",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:24:28.729Z"
   }
 ]

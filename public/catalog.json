@@ -1844,5 +1844,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T14:58:11.642Z"
+  },
+  {
+    "id": "thebeatles::cantbuymelove",
+    "artist": "The Beatles",
+    "track": "Can't Buy Me Love",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T14:58:21.317Z"
   }
 ]

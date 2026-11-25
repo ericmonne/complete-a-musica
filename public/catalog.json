@@ -4228,5 +4228,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T20:59:10.265Z"
+  },
+  {
+    "id": "charliebrownjr::meencontra",
+    "artist": "Charlie Brown Jr.",
+    "track": "Me encontra",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:59:26.232Z"
   }
 ]

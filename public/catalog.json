@@ -3601,5 +3601,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:57:04.210Z"
+  },
+  {
+    "id": "shakira::ojosasi",
+    "artist": "Shakira",
+    "track": "Ojos así",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:59:08.286Z"
   }
 ]

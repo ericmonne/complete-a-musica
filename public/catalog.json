@@ -3579,5 +3579,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:55:52.667Z"
+  },
+  {
+    "id": "seether::remedy",
+    "artist": "Seether",
+    "track": "Remedy",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:56:51.603Z"
   }
 ]

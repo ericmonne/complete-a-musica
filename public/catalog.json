@@ -4052,5 +4052,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T20:52:08.381Z"
+  },
+  {
+    "id": "raimundos::amaispedida",
+    "artist": "Raimundos",
+    "track": "A mais pedida",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:52:48.215Z"
   }
 ]

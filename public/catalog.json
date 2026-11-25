@@ -2754,5 +2754,16 @@
       "classics"
     ],
     "addedAt": "2026-11-25T17:10:06.254Z"
+  },
+  {
+    "id": "viniciusdemoraes::sambadabencao",
+    "artist": "Vinícius de Moraes",
+    "track": "Samba da Bênção",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:18:48.691Z"
   }
 ]

@@ -1756,5 +1756,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:47:31.990Z"
+  },
+  {
+    "id": "eminem::loseyourself",
+    "artist": "Eminem",
+    "track": "Lose yourself",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T14:23:41.823Z"
   }
 ]

@@ -3095,5 +3095,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:42:14.499Z"
+  },
+  {
+    "id": "destinyschild::survivor",
+    "artist": "Destiny´s Child",
+    "track": "Survivor",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:42:34.409Z"
   }
 ]

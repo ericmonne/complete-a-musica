@@ -2482,5 +2482,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:07:38.128Z"
+  },
+  {
+    "id": "gloriagaynor::iwillsurvive",
+    "artist": "Gloria Gaynor",
+    "track": "I Will Survive",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:08:43.686Z"
   }
 ]

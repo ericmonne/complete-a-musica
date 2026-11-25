@@ -1514,5 +1514,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T12:16:45.891Z"
+  },
+  {
+    "id": "smashmouth::allstar",
+    "artist": "Smash Mouth",
+    "track": "All Star",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:21:22.672Z"
   }
 ]

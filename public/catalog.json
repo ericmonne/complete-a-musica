@@ -2097,5 +2097,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:08:52.074Z"
+  },
+  {
+    "id": "thetemptations::mygirl",
+    "artist": "The Temptations",
+    "track": "My Girl",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:10:04.929Z"
   }
 ]

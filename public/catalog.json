@@ -3524,5 +3524,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:51:11.764Z"
+  },
+  {
+    "id": "rihanna::umbrella",
+    "artist": "Rihanna",
+    "track": "Umbrella",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:51:29.528Z"
   }
 ]

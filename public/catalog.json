@@ -3007,5 +3007,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:39:33.803Z"
+  },
+  {
+    "id": "thecardigans::lovefool",
+    "artist": "The Cardigans",
+    "track": "Lovefool",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:39:47.330Z"
   }
 ]

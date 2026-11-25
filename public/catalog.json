@@ -2460,5 +2460,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:06:53.920Z"
+  },
+  {
+    "id": "nodoubt::dontspeak",
+    "artist": "No Doubt",
+    "track": "Don't Speak",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:07:14.536Z"
   }
 ]

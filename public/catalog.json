@@ -2185,5 +2185,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:12:44.804Z"
+  },
+  {
+    "id": "arethafranklin::isayalittleprayer",
+    "artist": "Aretha Franklin",
+    "track": "I say a little prayer",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:13:12.719Z"
   }
 ]

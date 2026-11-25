@@ -1800,5 +1800,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T14:55:28.853Z"
+  },
+  {
+    "id": "mariahcarey::alwaysbemybaby",
+    "artist": "Mariah Carey",
+    "track": "Always Be My Baby",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T14:57:27.480Z"
   }
 ]

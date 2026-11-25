@@ -4107,5 +4107,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T20:54:11.220Z"
+  },
+  {
+    "id": "titas::oscegosdocastelo",
+    "artist": "Titãs",
+    "track": "Os Cegos Do Castelo",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:54:33.749Z"
   }
 ]

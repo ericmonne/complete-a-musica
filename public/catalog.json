@@ -3810,5 +3810,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T20:41:46.641Z"
+  },
+  {
+    "id": "yellowcard::oceanavenue",
+    "artist": "Yellowcard",
+    "track": "Ocean Avenue",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:42:07.144Z"
   }
 ]

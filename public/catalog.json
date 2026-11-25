@@ -3568,5 +3568,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:55:44.148Z"
+  },
+  {
+    "id": "lasketchup::asereje",
+    "artist": "Las Ketchup",
+    "track": "Asereje",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:55:52.667Z"
   }
 ]

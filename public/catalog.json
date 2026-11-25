@@ -3458,5 +3458,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:49:24.869Z"
+  },
+  {
+    "id": "pobox::papodejacare",
+    "artist": "PO BOX",
+    "track": "Papo de Jacaré",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:49:52.238Z"
   }
 ]

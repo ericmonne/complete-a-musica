@@ -2776,5 +2776,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:21:42.444Z"
+  },
+  {
+    "id": "aerosmith::idontwanttomissathing",
+    "artist": "Aerosmith",
+    "track": "I Don’t Want to Miss a Thing",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:26:06.851Z"
   }
 ]

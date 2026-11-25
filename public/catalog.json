@@ -2317,5 +2317,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:24:28.729Z"
+  },
+  {
+    "id": "googoodollsthe::iris",
+    "artist": "Goo Goo Dolls, The",
+    "track": "Iris",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:25:14.354Z"
   }
 ]

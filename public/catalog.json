@@ -1690,5 +1690,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:42:40.811Z"
+  },
+  {
+    "id": "kellyclarkson::sinceubeengone",
+    "artist": "Kelly Clarkson",
+    "track": "Since U Been Gone",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:45:22.799Z"
   }
 ]

@@ -2908,5 +2908,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:36:32.241Z"
+  },
+  {
+    "id": "blink182::adamssong",
+    "artist": "blink‐182",
+    "track": "Adam's Song",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:36:42.311Z"
   }
 ]

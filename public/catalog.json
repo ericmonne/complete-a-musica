@@ -3975,5 +3975,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T20:49:22.726Z"
+  },
+  {
+    "id": "capitalinicial::veraneiovascaina",
+    "artist": "Capital Inicial",
+    "track": "Veraneio Vascaina",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:49:35.817Z"
   }
 ]

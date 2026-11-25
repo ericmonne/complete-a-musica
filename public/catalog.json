@@ -2952,5 +2952,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:37:15.555Z"
+  },
+  {
+    "id": "blue::allrise",
+    "artist": "Blue",
+    "track": "All Rise",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:37:29.137Z"
   }
 ]

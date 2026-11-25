@@ -1,0 +1,36 @@
+{
+  "name": "complete-a-musica",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "vite --host 127.0.0.1",
+    "server": "node server/index.mjs",
+    "build": "tsc -b && vite build",
+    "desktop:build": "tsc -b && vite build --config vite.desktop.config.ts && node scripts/prepare-desktop.mjs",
+    "desktop": "npm run desktop:build && electron ./desktop-dist",
+    "desktop:package": "npm run desktop:build && npx electron-packager ./desktop-dist CompleteAMusica-Catalogo --platform=win32 --arch=x64 --out=release --asar --overwrite",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@electron/packager": "^18.3.6",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^22.13.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^34.2.0",
+    "jsdom": "^26.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.11",
+    "vitest": "^3.0.5"
+  }
+}

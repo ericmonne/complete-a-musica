@@ -3183,5 +3183,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:44:45.158Z"
+  },
+  {
+    "id": "five::whenthelightsgoout",
+    "artist": "Five",
+    "track": "When the Lights Go Out",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:45:04.212Z"
   }
 ]

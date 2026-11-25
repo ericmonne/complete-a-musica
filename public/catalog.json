@@ -4140,5 +4140,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T20:55:09.337Z"
+  },
+  {
+    "id": "robertacampos::dejaneiroajaneiro",
+    "artist": "Roberta Campos",
+    "track": "De Janeiro a Janeiro",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:55:59.932Z"
   }
 ]

@@ -1679,5 +1679,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T13:42:18.563Z"
+  },
+  {
+    "id": "nirvana::nirvanalithium",
+    "artist": "Nirvana",
+    "track": "Nirvana - Lithium",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T13:42:40.811Z"
   }
 ]

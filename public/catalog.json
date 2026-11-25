@@ -4085,5 +4085,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T20:53:09.970Z"
+  },
+  {
+    "id": "raimundos::aquela",
+    "artist": "Raimundos",
+    "track": "Aquela",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T20:53:14.941Z"
   }
 ]

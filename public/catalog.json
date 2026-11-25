@@ -2875,5 +2875,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:35:11.972Z"
+  },
+  {
+    "id": "bennybenassi::satisfaction",
+    "artist": "Benny Benassi",
+    "track": "Satisfaction",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:35:29.753Z"
   }
 ]

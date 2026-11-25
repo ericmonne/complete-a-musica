@@ -2985,5 +2985,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:38:24.688Z"
+  },
+  {
+    "id": "thecalling::whereveryouwillgo",
+    "artist": "The Calling",
+    "track": "Wherever You Will Go",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:39:14.778Z"
   }
 ]

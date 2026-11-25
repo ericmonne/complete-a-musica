@@ -3557,5 +3557,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T18:55:33.841Z"
+  },
+  {
+    "id": "rouge::ragatanga",
+    "artist": "Rouge",
+    "track": "Ragatanga",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T18:55:44.148Z"
   }
 ]

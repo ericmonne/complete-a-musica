@@ -3216,5 +3216,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T17:46:13.438Z"
+  },
+  {
+    "id": "foofighters::allmylife",
+    "artist": "Foo Fighters",
+    "track": "All My Life",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T17:46:24.146Z"
   }
 ]

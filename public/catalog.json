@@ -1778,5 +1778,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T14:25:15.841Z"
+  },
+  {
+    "id": "georgemichael::freedom90",
+    "artist": "George Michael",
+    "track": "Freedom! '90",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T14:25:22.806Z"
   }
 ]

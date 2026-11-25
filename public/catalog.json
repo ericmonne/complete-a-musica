@@ -2108,5 +2108,16 @@
       "rock_pop"
     ],
     "addedAt": "2026-11-25T15:10:04.929Z"
+  },
+  {
+    "id": "beatlesthe::beatlesyesterday",
+    "artist": "Beatles, The",
+    "track": "Beatles - Yesterday",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-25T15:10:38.543Z"
   }
 ]

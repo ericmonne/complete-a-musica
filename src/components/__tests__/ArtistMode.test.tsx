@@ -98,7 +98,7 @@ describe('Artist / Band Live Draw Mode', () => {
 
     const artistInput = screen.getByLabelText(/Nome do artista ou banda/i);
     await user.type(artistInput, 'Djavan');
-    await user.click(screen.getByRole('button', { name: /Sortear Artista/i }));
+    await user.click(screen.getByRole('button', { name: /Escolher Artista ou Banda/i }));
 
     await waitFor(() => {
       expect(screen.getByText(/Modo Artista:/i)).toBeInTheDocument();
@@ -130,7 +130,7 @@ describe('Artist / Band Live Draw Mode', () => {
 
     const artistInput = screen.getByLabelText(/Nome do artista ou banda/i);
     await user.type(artistInput, 'ArtistaDesconhecidoXYZ');
-    await user.click(screen.getByRole('button', { name: /Sortear Artista/i }));
+    await user.click(screen.getByRole('button', { name: /Escolher Artista ou Banda/i }));
 
     const alert = await screen.findByRole('alert');
     expect(alert.textContent).toMatch(/ArtistaDesconhecidoXYZ/i);

@@ -159,7 +159,7 @@ export function Header({
               className="btn btn-primary"
               disabled={isLoading || !artistInput.trim()}
             >
-              Sortear Artista
+              Escolher Artista ou Banda
             </button>
           </form>
         </div>

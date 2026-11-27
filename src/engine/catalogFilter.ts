@@ -6,7 +6,7 @@ import {
   StyleTag,
 } from '../types/game';
 
-export const LANGUAGE_TAGS: readonly SongLanguage[] = ['pt', 'en', 'es'];
+export const LANGUAGE_TAGS: readonly SongLanguage[] = ['pt', 'en', 'es', 'it'];
 
 export const STYLE_TAGS: readonly StyleTag[] = [
   'rock_pop',
@@ -40,8 +40,9 @@ export const TAG_LABELS: Record<FilterTag, string> = {
   pt: 'Português',
   en: 'Inglês',
   es: 'Espanhol',
+  it: 'Italiano',
   rock_pop: 'Rock & Pop',
-  rap: 'Rap',
+  rap: 'Rap & Reggaeton',
   mpb: 'MPB',
   sertanejo: 'Sertanejo / Country',
   classics: 'Clássicos',

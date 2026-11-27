@@ -17,11 +17,12 @@ const SAMPLE: SeedTrack[] = [
   { artist: 'Caetano Veloso', track: 'Sozinho', lang: 'pt', tags: ['pt', 'mpb', '90s'] },
   { artist: 'Leandro & Leonardo', track: 'Pense em Mim', lang: 'pt', tags: ['pt', 'sertanejo', '90s'] },
   { artist: 'Idina Menzel', track: 'Let It Go', lang: 'en', tags: ['en', 'soundtracks', '2010s'] },
+  { artist: 'Laura Pausini', track: 'La solitudine', lang: 'it', tags: ['it', 'rock_pop', 'classics', '90s'] },
   { artist: 'Cult Gem', track: 'Hidden Gem', lang: 'pt', tags: ['pt', 'creators_pick', '90s'] },
 ];
 
 describe('catalogFilter', () => {
-  it('matches default filter (pt + en + rock_pop) and excludes es and pure rap', () => {
+  it('matches default filter (pt + en + rock_pop) and excludes es, it, and pure rap', () => {
     const matched = filterCatalogTracks(SAMPLE, DEFAULT_FILTER_TAGS).map((t) => t.track);
     expect(matched).toEqual(['Tempo Perdido', "Don't Stop Me Now"]);
   });
@@ -29,6 +30,7 @@ describe('catalogFilter', () => {
   it('supports multi-select across languages and styles (OR within group, AND across groups)', () => {
     const matched = filterCatalogTracks(SAMPLE, ['rock_pop', 'es', 'pt']).map((t) => t.track);
     expect(matched).toEqual(['Tempo Perdido', 'De Música Ligera']);
+    expect(filterCatalogTracks(SAMPLE, ['it']).map((t) => t.track)).toEqual(['La solitudine']);
   });
 
   it('filters by decade, rap, mpb, sertanejo, soundtracks, and creators_pick', () => {
@@ -52,6 +54,7 @@ describe('catalogFilter', () => {
     ]);
     expect(filterCatalogTracks(SAMPLE, ['classics', 'soundtracks']).map((t) => t.track)).toEqual([
       'Let It Go',
+      'La solitudine',
     ]);
     expect(filterCatalogTracks(SAMPLE, ['creators_pick']).map((t) => t.track)).toEqual([
       'Hidden Gem',

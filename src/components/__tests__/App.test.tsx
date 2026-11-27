@@ -50,7 +50,8 @@ describe('Complete a Música App integration', () => {
     expect(screen.getByRole('button', { name: 'Inglês' })).toHaveAttribute('aria-pressed', 'true');
     expect(screen.getByRole('button', { name: 'Rock & Pop' })).toHaveAttribute('aria-pressed', 'true');
     expect(screen.getByRole('button', { name: 'Espanhol' })).toHaveAttribute('aria-pressed', 'false');
-    expect(screen.getByRole('button', { name: 'Rap' })).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByRole('button', { name: 'Italiano' })).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByRole('button', { name: 'Rap & Reggaeton' })).toHaveAttribute('aria-pressed', 'false');
     expect(screen.getByRole('button', { name: 'Seleção dos Criadores' })).toHaveAttribute(
       'aria-pressed',
       'false'
@@ -242,7 +243,7 @@ describe('Complete a Música App integration', () => {
     await screen.findByLabelText(/Digite uma palavra da música/i);
 
     const esBtn = screen.getByRole('button', { name: 'Espanhol' });
-    const rapBtn = screen.getByRole('button', { name: 'Rap' });
+    const rapBtn = screen.getByRole('button', { name: 'Rap & Reggaeton' });
 
     await user.click(esBtn);
     await user.click(rapBtn);

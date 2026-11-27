@@ -738,9 +738,9 @@ export function DesktopApp() {
             <div>
               <h1 className="desk-title">Gerenciador de Catálogo — Complete a Música</h1>
               <p className="desk-subtitle">
-                Adicione músicas, defina décadas, estilos (Rock &amp; Pop, Rap, MPB,
-                Sertanejo / Country, Clássicos, Trilhas Sonoras) e marque a Seleção dos
-                Criadores.
+                Adicione músicas, defina décadas, estilos (Rock &amp; Pop, Rap &amp;
+                Reggaeton, MPB, Sertanejo / Country, Clássicos, Trilhas Sonoras) e marque a
+                Seleção dos Criadores.
               </p>
             </div>
 
@@ -1036,6 +1036,7 @@ export function DesktopApp() {
                         <option value="pt">Português</option>
                         <option value="en">Inglês</option>
                         <option value="es">Espanhol</option>
+                        <option value="it">Italiano</option>
                       </select>
 
                       <select
@@ -1159,6 +1160,7 @@ export function DesktopApp() {
                     <option value="pt">Português</option>
                     <option value="en">Inglês</option>
                     <option value="es">Espanhol</option>
+                    <option value="it">Italiano</option>
                   </select>
                 </div>
 
@@ -1252,6 +1254,7 @@ export function DesktopApp() {
                   <option value="pt">Português</option>
                   <option value="en">Inglês</option>
                   <option value="es">Espanhol</option>
+                  <option value="it">Italiano</option>
                 </optgroup>
                 <optgroup label="Estilo / Coleção">
                   {STYLE_TAGS.map((styleTag) => (
@@ -1359,6 +1362,7 @@ export function DesktopApp() {
                               <option value="pt">Português</option>
                               <option value="en">Inglês</option>
                               <option value="es">Espanhol</option>
+                              <option value="it">Italiano</option>
                             </select>
                           </label>
 

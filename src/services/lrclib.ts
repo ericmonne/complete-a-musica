@@ -105,8 +105,20 @@ export function inferSongLanguage(cleanedLyrics: string): SongLanguage {
   ) {
     return 'pt';
   }
+  const hasSpanishMarkers = /[ñ¿¡]/i.test(cleanedLyrics);
+  if (!hasSpanishMarkers) {
+    const italianMatches = cleanedLyrics.match(
+      /\b(perch[eé]|più|così|c'è|della|degli|sono|ancora|niente|questo|questa|sempre|cuore|senza|tutto|non\s+c'è)\b/gi
+    );
+    if (
+      /\b(perch[eé]|più|così|c'è|non\s+c'è)\b/i.test(cleanedLyrics) ||
+      (italianMatches && italianMatches.length >= 2)
+    ) {
+      return 'it';
+    }
+  }
   if (
-    /[ñ¿¡]/i.test(cleanedLyrics) ||
+    hasSpanishMarkers ||
     /\b(corazón|también|siempre|quiero|puedo|tengo|estoy|eres|porque|cuando|dónde|qué|cómo|más|aquí|así|sueño|mañana|contigo|conmigo)\b/i.test(
       cleanedLyrics
     ) ||

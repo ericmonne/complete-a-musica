@@ -14,6 +14,8 @@ const SAMPLE: SeedTrack[] = [
   { artist: 'Soda Stereo', track: 'De Música Ligera', lang: 'es', tags: ['es', 'rock_pop', '90s'] },
   { artist: 'Eminem', track: 'Lose Yourself', lang: 'en', tags: ['en', 'rap', '2000s'] },
   { artist: 'Racionais', track: 'Negro Drama', lang: 'pt', tags: ['pt', 'rap', '2000s'] },
+  { artist: 'Caetano Veloso', track: 'Sozinho', lang: 'pt', tags: ['pt', 'mpb', '90s'] },
+  { artist: 'Leandro & Leonardo', track: 'Pense em Mim', lang: 'pt', tags: ['pt', 'sertanejo', '90s'] },
   { artist: 'Cult Gem', track: 'Hidden Gem', lang: 'pt', tags: ['pt', 'creators_pick', '90s'] },
 ];
 
@@ -28,13 +30,21 @@ describe('catalogFilter', () => {
     expect(matched).toEqual(['Tempo Perdido', 'De Música Ligera']);
   });
 
-  it('filters by decade, rap, and creators_pick', () => {
+  it('filters by decade, rap, mpb, sertanejo, and creators_pick', () => {
     expect(filterCatalogTracks(SAMPLE, ['rap']).map((t) => t.track)).toEqual([
       'Lose Yourself',
       'Negro Drama',
     ]);
     expect(filterCatalogTracks(SAMPLE, ['rap', '2000s', 'pt']).map((t) => t.track)).toEqual([
       'Negro Drama',
+    ]);
+    expect(filterCatalogTracks(SAMPLE, ['mpb']).map((t) => t.track)).toEqual(['Sozinho']);
+    expect(filterCatalogTracks(SAMPLE, ['sertanejo']).map((t) => t.track)).toEqual([
+      'Pense em Mim',
+    ]);
+    expect(filterCatalogTracks(SAMPLE, ['mpb', 'sertanejo']).map((t) => t.track)).toEqual([
+      'Sozinho',
+      'Pense em Mim',
     ]);
     expect(filterCatalogTracks(SAMPLE, ['creators_pick']).map((t) => t.track)).toEqual([
       'Hidden Gem',

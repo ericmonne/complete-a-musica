@@ -11,6 +11,8 @@ export const LANGUAGE_TAGS: readonly SongLanguage[] = ['pt', 'en', 'es'];
 export const STYLE_TAGS: readonly StyleTag[] = [
   'rock_pop',
   'rap',
+  'mpb',
+  'sertanejo',
   'classics',
   'creators_pick',
 ];
@@ -39,6 +41,8 @@ export const TAG_LABELS: Record<FilterTag, string> = {
   es: 'Espanhol',
   rock_pop: 'Rock & Pop',
   rap: 'Rap',
+  mpb: 'MPB',
+  sertanejo: 'Sertanejo',
   classics: 'Clássicos & Trilhas',
   creators_pick: 'Seleção dos Criadores',
   '60s_before': 'Até anos 60',

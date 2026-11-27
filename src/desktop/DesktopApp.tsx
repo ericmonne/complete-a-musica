@@ -738,8 +738,8 @@ export function DesktopApp() {
             <div>
               <h1 className="desk-title">Gerenciador de Catálogo — Complete a Música</h1>
               <p className="desk-subtitle">
-                Adicione músicas, defina décadas, estilo (Rock &amp; Pop / Rap) e marque a
-                Seleção dos Criadores.
+                Adicione músicas, defina décadas, estilos (Rock &amp; Pop, Rap, MPB,
+                Sertanejo) e marque a Seleção dos Criadores.
               </p>
             </div>
 

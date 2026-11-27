@@ -11,6 +11,8 @@ const ALLOWED_TAGS = new Set([
   'es',
   'rock_pop',
   'rap',
+  'mpb',
+  'sertanejo',
   'classics',
   'creators_pick',
   '60s_before',

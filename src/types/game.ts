@@ -1,6 +1,12 @@
 export type SongLanguage = 'pt' | 'en' | 'es';
 
-export type StyleTag = 'rock_pop' | 'rap' | 'classics' | 'creators_pick';
+export type StyleTag =
+  | 'rock_pop'
+  | 'rap'
+  | 'mpb'
+  | 'sertanejo'
+  | 'classics'
+  | 'creators_pick';
 
 export type DecadeTag =
   | '60s_before'

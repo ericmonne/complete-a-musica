@@ -110,6 +110,7 @@ describe('DesktopApp Catalog Manager', () => {
       await user.clear(artistInput);
       await user.clear(trackInput);
       await user.selectOptions(screen.getByLabelText(/^Idioma$/i), 'es');
+      await user.selectOptions(screen.getByLabelText(/^Década$/i), '90s');
       await user.type(artistInput, 'Soda Stereo');
       await user.type(trackInput, 'De Música Ligera');
       expect(addBtn).toBeEnabled();
@@ -118,6 +119,22 @@ describe('DesktopApp Catalog Manager', () => {
 
       await waitFor(() => {
         expect(screen.getByText('De Música Ligera')).toBeInTheDocument();
+      });
+
+      // Test inline editing to add "Seleção dos Criadores"
+      const editButtons = screen.getAllByRole('button', { name: /^Editar$/i });
+      await user.click(editButtons[0]);
+
+      const editDecadeSelect = screen.getByLabelText(/Editar década de De Música Ligera/i);
+      await user.selectOptions(editDecadeSelect, '90s');
+      const creatorsCheckboxes = screen.getAllByRole('checkbox', {
+        name: /Seleção dos Criadores/i,
+      });
+      await user.click(creatorsCheckboxes[creatorsCheckboxes.length - 1]);
+      await user.click(screen.getByRole('button', { name: /Salvar alterações/i }));
+
+      await waitFor(() => {
+        expect(ghCatalog[1].tags).toContain('creators_pick');
       });
 
       await user.selectOptions(
@@ -135,6 +152,7 @@ describe('DesktopApp Catalog Manager', () => {
       expect(putCall).toBeDefined();
       expect(ghCatalog).toHaveLength(2);
       expect(ghCatalog[1].lang).toBe('es');
+      expect(ghCatalog[1].tags).toContain('90s');
     });
   });
 

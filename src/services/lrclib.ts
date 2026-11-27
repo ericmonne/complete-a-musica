@@ -1,6 +1,12 @@
+import { filterCatalogTracks } from '../engine/catalogFilter';
 import { cleanLyrics } from '../engine/lyricsCleaner';
 import { canonicalSongKey, normalizeWord } from '../engine/normalize';
-import { CategoryId, SeedTrack, SongData, SongLanguage } from '../types/game';
+import {
+  FilterTag,
+  SeedTrack,
+  SongData,
+  SongLanguage,
+} from '../types/game';
 import { EMERGENCY_OFFLINE_SONGS, SEED_TRACKS } from './seedCatalog';
 
 export const LRCLIB_SEARCH_URL = 'https://lrclib.net/api/search';
@@ -33,6 +39,15 @@ export class ArtistNotFoundError extends Error {
       `Nenhuma música com letra jogável foi encontrada no LRCLIB para "${artistName}".`
     );
     this.name = 'ArtistNotFoundError';
+  }
+}
+
+export class EmptyFilterPoolError extends Error {
+  constructor() {
+    super(
+      'Nenhuma música encontrada para essa combinação de filtros. Ajuste as categorias ou clique em "Todas".'
+    );
+    this.name = 'EmptyFilterPoolError';
   }
 }
 
@@ -317,14 +332,14 @@ async function queryLrclibSeed(seed: SeedTrack): Promise<SongData | null> {
   };
 }
 
-function pickOfflineFallback(category: CategoryId, excludeSongId?: string): SongData {
+function pickOfflineFallback(
+  selectedTags: readonly FilterTag[],
+  excludeSongId?: string
+): SongData {
   const playedKeys = loadPlayedKeys(PLAYED_STORAGE_KEY);
-  const categoryPool =
-    category === 'all'
-      ? EMERGENCY_OFFLINE_SONGS
-      : EMERGENCY_OFFLINE_SONGS.filter((song) => song.tags.includes(category));
+  const filteredPool = filterCatalogTracks(EMERGENCY_OFFLINE_SONGS, selectedTags);
 
-  const pool = categoryPool.length > 0 ? categoryPool : EMERGENCY_OFFLINE_SONGS;
+  const pool = filteredPool.length > 0 ? filteredPool : EMERGENCY_OFFLINE_SONGS;
   const unplayed = pool.filter(
     (song) => song.id !== excludeSongId && !playedKeys.has(song.id)
   );
@@ -348,31 +363,32 @@ function pickOfflineFallback(category: CategoryId, excludeSongId?: string): Song
 }
 
 /**
- * Draws a random mystery song for the selected category from LRCLIB,
+ * Draws a random mystery song matching the selected filter tags from LRCLIB,
  * avoiding repeats within the current browser session and falling back
  * to the offline emergency catalog only if LRCLIB queries fail.
  */
 export async function fetchRandomMysterySong(
-  category: CategoryId,
+  selectedTags: readonly FilterTag[],
   excludeSongId?: string
 ): Promise<SongData> {
   const catalogTracks = await fetchCatalogTracks();
   const playedKeys = loadPlayedKeys(PLAYED_STORAGE_KEY);
-  const categoryPool =
-    category === 'all'
-      ? catalogTracks
-      : catalogTracks.filter((seed) => seed.tags.includes(category));
+  const pool = filterCatalogTracks(catalogTracks, selectedTags);
 
-  const pool = categoryPool.length > 0 ? categoryPool : catalogTracks;
+  if (selectedTags.length > 0 && pool.length === 0) {
+    throw new EmptyFilterPoolError();
+  }
 
-  let unplayed = pool.filter((seed) => !playedKeys.has(seedKey(seed)));
+  const effectivePool = pool.length > 0 ? pool : catalogTracks;
+
+  let unplayed = effectivePool.filter((seed) => !playedKeys.has(seedKey(seed)));
   if (unplayed.length === 0) {
-    const poolKeys = new Set(pool.map(seedKey));
+    const poolKeys = new Set(effectivePool.map(seedKey));
     const updatedKeys = new Set(
       Array.from(playedKeys).filter((k) => !poolKeys.has(k))
     );
     savePlayedKeys(PLAYED_STORAGE_KEY, updatedKeys);
-    unplayed = pool;
+    unplayed = effectivePool;
   }
 
   const candidates = shuffle(unplayed).slice(0, MAX_SEED_ATTEMPTS);
@@ -398,7 +414,7 @@ export async function fetchRandomMysterySong(
     return duplicateFallback;
   }
 
-  return pickOfflineFallback(category, excludeSongId);
+  return pickOfflineFallback(selectedTags, excludeSongId);
 }
 
 /**

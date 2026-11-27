@@ -4,18 +4,27 @@ import { GameControls } from './components/GameControls';
 import { Header } from './components/Header';
 import { LyricsBoard } from './components/LyricsBoard';
 import { MysteryCard } from './components/MysteryCard';
+import {
+  areFilterSetsEqual,
+  DEFAULT_FILTER_TAGS,
+  filterCatalogTracks,
+  toggleFilterTag,
+} from './engine/catalogFilter';
 import { normalizeWord } from './engine/normalize';
 import { parseLyrics } from './engine/tokenizer';
 import {
   ArtistNotFoundError,
+  EmptyFilterPoolError,
+  fetchCatalogTracks,
   fetchRandomMysterySong,
   fetchRandomSongByArtist,
 } from './services/lrclib';
 import {
-  CategoryId,
+  FilterTag,
   GameStatus,
   ParsedLyrics,
   RevealSource,
+  SeedTrack,
   SongData,
   ThemeMode,
 } from './types/game';
@@ -44,7 +53,15 @@ function getInitialTheme(): ThemeMode {
 
 export function App() {
   const [theme, setTheme] = useState<ThemeMode>(getInitialTheme);
-  const [category, setCategory] = useState<CategoryId>('all');
+  const [selectedTags, setSelectedTags] = useState<FilterTag[]>(() => [
+    ...DEFAULT_FILTER_TAGS,
+  ]);
+  const [appliedTags, setAppliedTags] = useState<FilterTag[]>(() => [
+    ...DEFAULT_FILTER_TAGS,
+  ]);
+  const [catalogMeta, setCatalogMeta] = useState<
+    Array<Pick<SeedTrack, 'lang' | 'tags'>> | null
+  >(null);
   const [activeArtist, setActiveArtist] = useState<string | null>(null);
   const [song, setSong] = useState<SongData | null>(null);
   const [parsedLyrics, setParsedLyrics] = useState<ParsedLyrics | null>(null);
@@ -88,6 +105,18 @@ export function App() {
     };
   }, []);
 
+  useEffect(() => {
+    let active = true;
+    void fetchCatalogTracks().then((tracks) => {
+      if (!active) return;
+      // Store only non-spoiler language/tag metadata for instant filter counting
+      setCatalogMeta(tracks.map((t) => ({ lang: t.lang, tags: t.tags })));
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const applyLoadedSong = useCallback((nextSong: SongData) => {
     const parsed = parseLyrics(nextSong.lyrics);
     if (parsed.segments.length === 0) {
@@ -106,36 +135,49 @@ export function App() {
   }, []);
 
   const loadSong = useCallback(
-    async (targetCategory: CategoryId) => {
+    async (targetTags: readonly FilterTag[]) => {
       const requestId = ++requestCounterRef.current;
-      setActiveArtist(null);
+      const hadActiveSong = Boolean(parsedLyrics && song);
       setArtistNotice(null);
-      setIsSearchingArtist(false);
-      setGameStatus('loading');
       setErrorMsg(null);
-      setInputValue('');
-      setHintUsed(false);
-      setLastRevealedIds(new Set());
-      setLastMatchCount(0);
+      setIsSearchingArtist(false);
+
+      if (!hadActiveSong) {
+        setGameStatus('loading');
+      } else {
+        setGameStatus('loading');
+      }
 
       try {
         const nextSong = await fetchRandomMysterySong(
-          targetCategory,
+          targetTags,
           currentSongIdRef.current
         );
         if (requestId !== requestCounterRef.current) {
           return;
         }
+        setActiveArtist(null);
+        setAppliedTags([...targetTags]);
         applyLoadedSong(nextSong);
-      } catch {
+      } catch (err) {
         if (requestId !== requestCounterRef.current) {
+          return;
+        }
+        if (err instanceof EmptyFilterPoolError) {
+          if (hadActiveSong) {
+            setArtistNotice(err.message);
+            setGameStatus('playing');
+            return;
+          }
+          setErrorMsg(err.message);
+          setGameStatus('error');
           return;
         }
         setErrorMsg('Não foi possível carregar uma música no momento. Tente novamente.');
         setGameStatus('error');
       }
     },
-    [applyLoadedSong]
+    [applyLoadedSong, parsedLyrics, song]
   );
 
   const handleDrawByArtist = useCallback(
@@ -186,8 +228,10 @@ export function App() {
   );
 
   useEffect(() => {
-    void loadSong('all');
-  }, [loadSong]);
+    void loadSong(DEFAULT_FILTER_TAGS);
+    // Initial draw runs once on mount with default filters
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (gameStatus === 'playing' && !isSearchingArtist) {
@@ -202,21 +246,50 @@ export function App() {
 
   const totalCount = parsedLyrics?.segments.length ?? 0;
 
-  const handleSelectCategory = (nextCategory: CategoryId) => {
-    setCategory(nextCategory);
-    void loadSong(nextCategory);
+  const matchingSongCount = useMemo(() => {
+    if (!catalogMeta) return null;
+    return filterCatalogTracks(catalogMeta, selectedTags).length;
+  }, [catalogMeta, selectedTags]);
+
+  const hasPendingFilterChanges = useMemo(
+    () => !areFilterSetsEqual(selectedTags, appliedTags),
+    [selectedTags, appliedTags]
+  );
+
+  const handleToggleTag = (tag: FilterTag) => {
+    setArtistNotice(null);
+    if (activeArtist) {
+      setActiveArtist(null);
+    }
+    setSelectedTags((prev) => toggleFilterTag(prev, tag));
+  };
+
+  const handleSelectAll = () => {
+    setArtistNotice(null);
+    setActiveArtist(null);
+    setSelectedTags([]);
+  };
+
+  const handleResetDefaultFilters = () => {
+    setArtistNotice(null);
+    setActiveArtist(null);
+    setSelectedTags([...DEFAULT_FILTER_TAGS]);
+  };
+
+  const handleApplyFilters = () => {
+    void loadSong(selectedTags);
   };
 
   const handleNewSong = () => {
-    if (activeArtist) {
+    if (activeArtist && !hasPendingFilterChanges) {
       void handleDrawByArtist(activeArtist);
     } else {
-      void loadSong(category);
+      void loadSong(selectedTags);
     }
   };
 
   const handleClearArtistMode = () => {
-    void loadSong(category);
+    void loadSong(selectedTags);
   };
 
   const handleToggleTheme = () => {
@@ -282,11 +355,16 @@ export function App() {
     <div className="app-shell">
       <div className="app-container">
         <Header
-          category={category}
+          selectedTags={selectedTags}
+          hasPendingFilterChanges={hasPendingFilterChanges}
+          matchingSongCount={matchingSongCount}
           activeArtist={activeArtist}
           theme={theme}
           isLoading={gameStatus === 'loading' || isSearchingArtist}
-          onSelectCategory={handleSelectCategory}
+          onToggleTag={handleToggleTag}
+          onSelectAll={handleSelectAll}
+          onResetDefaultFilters={handleResetDefaultFilters}
+          onApplyFilters={handleApplyFilters}
           onDrawByArtist={(artist) => void handleDrawByArtist(artist)}
           onClearArtistMode={handleClearArtistMode}
           onNewSong={handleNewSong}
@@ -321,7 +399,7 @@ export function App() {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={() => void loadSong(category)}
+                onClick={() => void loadSong(selectedTags)}
               >
                 Tentar Novamente
               </button>

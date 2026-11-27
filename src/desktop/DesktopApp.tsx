@@ -1,4 +1,10 @@
 import { FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  DECADE_TAGS,
+  extractDecadeTag,
+  STYLE_TAGS,
+  TAG_LABELS,
+} from '../engine/catalogFilter';
 import { cleanLyrics } from '../engine/lyricsCleaner';
 import { canonicalSongKey, normalizeWord } from '../engine/normalize';
 import {
@@ -10,7 +16,14 @@ import {
   MIN_LYRICS_WORDS,
   queryLrclibRecords,
 } from '../services/lrclib';
-import { CatalogTrack, CategoryId, SongLanguage, ThemeMode } from '../types/game';
+import {
+  CatalogTrack,
+  DecadeTag,
+  FilterTag,
+  SongLanguage,
+  StyleTag,
+  ThemeMode,
+} from '../types/game';
 import {
   addTrackToGitHubCatalog,
   DuplicateCatalogError,
@@ -18,6 +31,7 @@ import {
   GitHubAuthError,
   GitHubNotFoundError,
   removeTrackFromGitHubCatalog,
+  updateTrackInGitHubCatalog,
   verifyAndFetchGitHubCatalog,
 } from './githubCatalogClient';
 
@@ -50,7 +64,7 @@ type ConnectionState =
   | 'invalid_key'
   | 'unreachable';
 
-type ExtraTag = 'rock_pop' | 'classics';
+type CatalogFilterValue = 'all' | 'no_decade' | FilterTag;
 
 interface LrclibSearchCandidate {
   key: string;
@@ -62,7 +76,8 @@ interface LrclibSearchCandidate {
   instrumental: boolean;
   cleanedLyrics: string;
   lang: SongLanguage;
-  tags: ExtraTag[];
+  styleTags: StyleTag[];
+  decade: DecadeTag | '';
 }
 
 function readStorage(key: string, fallback = ''): string {
@@ -97,6 +112,22 @@ function getInitialTheme(): ThemeMode {
     return 'dark';
   }
   return 'light';
+}
+
+function composeTrackTags(
+  lang: SongLanguage,
+  styleTags: readonly StyleTag[],
+  decade: DecadeTag | ''
+): FilterTag[] {
+  const tags: FilterTag[] = [lang, ...styleTags];
+  if (decade) {
+    tags.push(decade);
+  }
+  return Array.from(new Set(tags));
+}
+
+function toggleStyleInList(list: readonly StyleTag[], tag: StyleTag): StyleTag[] {
+  return list.includes(tag) ? list.filter((t) => t !== tag) : [...list, tag];
 }
 
 export function DesktopApp() {
@@ -160,13 +191,20 @@ export function DesktopApp() {
   const [manualArtist, setManualArtist] = useState('');
   const [manualTrack, setManualTrack] = useState('');
   const [manualLang, setManualLang] = useState<SongLanguage>('pt');
-  const [manualTags, setManualTags] = useState<ExtraTag[]>(['rock_pop']);
+  const [manualStyleTags, setManualStyleTags] = useState<StyleTag[]>(['rock_pop']);
+  const [manualDecade, setManualDecade] = useState<DecadeTag | ''>('');
   const [isAddingManual, setIsAddingManual] = useState(false);
 
-  // Catalog filter & removal state
+  // Catalog filter, inline editing & removal state
   const [catalogFilter, setCatalogFilter] = useState('');
-  const [catalogCategory, setCatalogCategory] = useState<CategoryId>('all');
+  const [catalogCategory, setCatalogCategory] =
+    useState<CatalogFilterValue>('all');
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [editingTrackId, setEditingTrackId] = useState<string | null>(null);
+  const [editLang, setEditLang] = useState<SongLanguage>('pt');
+  const [editStyleTags, setEditStyleTags] = useState<StyleTag[]>([]);
+  const [editDecade, setEditDecade] = useState<DecadeTag | ''>('');
+  const [isSavingEdit, setIsSavingEdit] = useState(false);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -292,13 +330,14 @@ export function DesktopApp() {
     setCatalogTracks([]);
     setStatusFeedback(null);
     setConfirmDeleteId(null);
+    setEditingTrackId(null);
   };
 
   const postTrackToCatalog = async (payload: {
     artist: string;
     track: string;
     lang: SongLanguage;
-    tags: ExtraTag[];
+    tags: FilterTag[];
   }): Promise<boolean> => {
     setStatusFeedback(null);
 
@@ -346,7 +385,7 @@ export function DesktopApp() {
           artist: payload.artist,
           track: payload.track,
           lang: payload.lang,
-          tags: [payload.lang, ...payload.tags],
+          tags: payload.tags,
         }),
       });
 
@@ -434,7 +473,8 @@ export function DesktopApp() {
           instrumental,
           cleanedLyrics,
           lang,
-          tags: ['rock_pop'],
+          styleTags: ['rock_pop'],
+          decade: '',
         };
       });
 
@@ -467,7 +507,7 @@ export function DesktopApp() {
         artist: candidate.artist,
         track: candidate.track,
         lang: candidate.lang,
-        tags: candidate.tags,
+        tags: composeTrackTags(candidate.lang, candidate.styleTags, candidate.decade),
       });
     } finally {
       setAddingKey(null);
@@ -496,7 +536,7 @@ export function DesktopApp() {
         artist: manualArtist.trim(),
         track: manualTrack.trim(),
         lang: manualLang,
-        tags: manualTags,
+        tags: composeTrackTags(manualLang, manualStyleTags, manualDecade),
       });
       if (ok) {
         setManualArtist('');
@@ -507,10 +547,92 @@ export function DesktopApp() {
     }
   };
 
-  const toggleManualTag = (tag: ExtraTag) => {
-    setManualTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+  const handleStartEdit = (item: CatalogTrack) => {
+    setConfirmDeleteId(null);
+    setEditingTrackId(item.id);
+    setEditLang(item.lang);
+    setEditStyleTags(
+      STYLE_TAGS.filter((styleTag) => item.tags.includes(styleTag))
     );
+    setEditDecade(extractDecadeTag(item.tags));
+  };
+
+  const handleSaveEdit = async (id: string) => {
+    setStatusFeedback(null);
+    setIsSavingEdit(true);
+    const nextTags = composeTrackTags(editLang, editStyleTags, editDecade);
+
+    try {
+      if (mode === 'github') {
+        const result = await updateTrackInGitHubCatalog({
+          repoInput: ghRepo,
+          branch: ghBranch,
+          token: ghToken,
+          id,
+          updates: { lang: editLang, tags: nextTags },
+        });
+        setCatalogTracks(result.tracks);
+        setEditingTrackId(null);
+        setStatusFeedback({
+          type: 'success',
+          text: `Tags atualizadas no GitHub: ${result.track.artist} — ${result.track.track}.`,
+        });
+        return;
+      }
+
+      const res = await fetch(
+        `${normalizedBaseUrl}/api/catalog/${encodeURIComponent(id)}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${adminKey.trim()}`,
+          },
+          body: JSON.stringify({ lang: editLang, tags: nextTags }),
+        }
+      );
+
+      if (res.status === 401) {
+        setConnState('invalid_key');
+        return;
+      }
+
+      const body = (await res.json().catch(() => ({}))) as {
+        track?: CatalogTrack;
+        error?: string;
+      };
+
+      if (!res.ok || !body.track) {
+        setStatusFeedback({
+          type: 'error',
+          text: body.error || 'Falha ao atualizar tags da música.',
+        });
+        return;
+      }
+
+      const updatedTrack = body.track;
+      setCatalogTracks((prev) =>
+        prev.map((item) => (item.id === id ? updatedTrack : item))
+      );
+      setEditingTrackId(null);
+      setStatusFeedback({
+        type: 'success',
+        text: `Tags atualizadas: ${updatedTrack.artist} — ${updatedTrack.track}`,
+      });
+    } catch (err) {
+      if (err instanceof GitHubAuthError) {
+        setConnState('invalid_key');
+      }
+      setStatusFeedback({
+        type: 'error',
+        text:
+          err instanceof Error
+            ? err.message
+            : 'Erro ao atualizar tags da música.',
+      });
+    } finally {
+      setIsSavingEdit(false);
+    }
   };
 
   const handleDeleteTrack = async (id: string) => {
@@ -589,7 +711,13 @@ export function DesktopApp() {
     return [...catalogTracks]
       .reverse()
       .filter((item) => {
-        if (catalogCategory !== 'all' && !item.tags.includes(catalogCategory)) {
+        if (catalogCategory === 'no_decade') {
+          if (extractDecadeTag(item.tags) !== '') return false;
+        } else if (
+          catalogCategory !== 'all' &&
+          item.lang !== catalogCategory &&
+          !item.tags.includes(catalogCategory)
+        ) {
           return false;
         }
         if (!q) return true;
@@ -610,8 +738,8 @@ export function DesktopApp() {
             <div>
               <h1 className="desk-title">Gerenciador de Catálogo — Complete a Música</h1>
               <p className="desk-subtitle">
-                Adicione músicas ao catálogo-base com proteção contra duplicatas e chave de
-                acesso.
+                Adicione músicas, defina décadas, estilo (Rock &amp; Pop / Rap) e marque a
+                Seleção dos Criadores.
               </p>
             </div>
 
@@ -834,8 +962,8 @@ export function DesktopApp() {
           <section className="desk-card" aria-label="Buscar no LRCLIB">
             <h2 className="section-title">1. Buscar no LRCLIB e Adicionar</h2>
             <p className="section-hint">
-              Pesquise uma música no LRCLIB para conferir a letra antes de incluir no
-              catálogo.
+              Pesquise uma música no LRCLIB para conferir a letra e definir idioma, estilo e
+              década antes de incluir no catálogo.
             </p>
 
             <form className="search-row" onSubmit={(e) => void handleSearchLrclib(e)}>
@@ -909,37 +1037,40 @@ export function DesktopApp() {
                         <option value="es">Espanhol</option>
                       </select>
 
-                      <label className="tag-check">
-                        <input
-                          type="checkbox"
-                          checked={item.tags.includes('rock_pop')}
-                          onChange={() =>
-                            handleUpdateLrclibCandidate(item.key, (prev) => ({
-                              ...prev,
-                              tags: prev.tags.includes('rock_pop')
-                                ? prev.tags.filter((t) => t !== 'rock_pop')
-                                : [...prev.tags, 'rock_pop'],
-                            }))
-                          }
-                        />
-                        Rock & Pop
-                      </label>
+                      <select
+                        aria-label={`Década de ${item.track}`}
+                        className="desk-select"
+                        value={item.decade}
+                        onChange={(e) =>
+                          handleUpdateLrclibCandidate(item.key, (prev) => ({
+                            ...prev,
+                            decade: e.target.value as DecadeTag | '',
+                          }))
+                        }
+                      >
+                        <option value="">Sem década</option>
+                        {DECADE_TAGS.map((dec) => (
+                          <option key={dec} value={dec}>
+                            {TAG_LABELS[dec]}
+                          </option>
+                        ))}
+                      </select>
 
-                      <label className="tag-check">
-                        <input
-                          type="checkbox"
-                          checked={item.tags.includes('classics')}
-                          onChange={() =>
-                            handleUpdateLrclibCandidate(item.key, (prev) => ({
-                              ...prev,
-                              tags: prev.tags.includes('classics')
-                                ? prev.tags.filter((t) => t !== 'classics')
-                                : [...prev.tags, 'classics'],
-                            }))
-                          }
-                        />
-                        Clássicos
-                      </label>
+                      {STYLE_TAGS.map((styleTag) => (
+                        <label key={styleTag} className="tag-check">
+                          <input
+                            type="checkbox"
+                            checked={item.styleTags.includes(styleTag)}
+                            onChange={() =>
+                              handleUpdateLrclibCandidate(item.key, (prev) => ({
+                                ...prev,
+                                styleTags: toggleStyleInList(prev.styleTags, styleTag),
+                              }))
+                            }
+                          />
+                          {TAG_LABELS[styleTag]}
+                        </label>
+                      ))}
 
                       <button
                         type="button"
@@ -1031,25 +1162,38 @@ export function DesktopApp() {
                 </div>
 
                 <div className="field-group">
-                  <span>Categorias adicionais</span>
-                  <div className="tags-inline">
-                    <label className="tag-check">
+                  <label htmlFor="manual-decade-select">Década</label>
+                  <select
+                    id="manual-decade-select"
+                    className="desk-select"
+                    value={manualDecade}
+                    onChange={(e) => setManualDecade(e.target.value as DecadeTag | '')}
+                  >
+                    <option value="">Sem década</option>
+                    {DECADE_TAGS.map((dec) => (
+                      <option key={dec} value={dec}>
+                        {TAG_LABELS[dec]}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="field-group">
+                <span>Estilos e coleções</span>
+                <div className="tags-inline">
+                  {STYLE_TAGS.map((styleTag) => (
+                    <label key={styleTag} className="tag-check">
                       <input
                         type="checkbox"
-                        checked={manualTags.includes('rock_pop')}
-                        onChange={() => toggleManualTag('rock_pop')}
+                        checked={manualStyleTags.includes(styleTag)}
+                        onChange={() =>
+                          setManualStyleTags((prev) => toggleStyleInList(prev, styleTag))
+                        }
                       />
-                      Rock & Pop
+                      {TAG_LABELS[styleTag]}
                     </label>
-                    <label className="tag-check">
-                      <input
-                        type="checkbox"
-                        checked={manualTags.includes('classics')}
-                        onChange={() => toggleManualTag('classics')}
-                      />
-                      Clássicos & Trilhas
-                    </label>
-                  </div>
+                  ))}
                 </div>
               </div>
 
@@ -1098,14 +1242,31 @@ export function DesktopApp() {
                 aria-label="Filtrar por categoria"
                 className="desk-select"
                 value={catalogCategory}
-                onChange={(e) => setCatalogCategory(e.target.value as CategoryId)}
+                onChange={(e) =>
+                  setCatalogCategory(e.target.value as CatalogFilterValue)
+                }
               >
                 <option value="all">Todas</option>
-                <option value="pt">Português</option>
-                <option value="en">Inglês</option>
-                <option value="es">Espanhol</option>
-                <option value="rock_pop">Rock & Pop</option>
-                <option value="classics">Clássicos & Trilhas</option>
+                <optgroup label="Idioma">
+                  <option value="pt">Português</option>
+                  <option value="en">Inglês</option>
+                  <option value="es">Espanhol</option>
+                </optgroup>
+                <optgroup label="Estilo / Coleção">
+                  {STYLE_TAGS.map((styleTag) => (
+                    <option key={styleTag} value={styleTag}>
+                      {TAG_LABELS[styleTag]}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Década">
+                  {DECADE_TAGS.map((dec) => (
+                    <option key={dec} value={dec}>
+                      {TAG_LABELS[dec]}
+                    </option>
+                  ))}
+                  <option value="no_decade">Sem década</option>
+                </optgroup>
               </select>
             </div>
           </div>
@@ -1118,51 +1279,148 @@ export function DesktopApp() {
                   : 'Conecte-se acima para visualizar o catálogo.'}
               </p>
             ) : (
-              filteredCatalog.map((item) => (
-                <div key={item.id} className="catalog-row">
-                  <div className="catalog-row-info">
-                    <strong>{item.track}</strong>
-                    <span className="catalog-artist"> — {item.artist}</span>
-                    <div className="catalog-tags">
-                      {item.tags.map((tag) => (
-                        <span key={tag} className="tag-pill">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+              filteredCatalog.map((item) => {
+                const isEditing = editingTrackId === item.id;
 
-                  <div className="catalog-row-actions">
-                    {confirmDeleteId === item.id ? (
-                      <>
-                        <button
-                          type="button"
-                          className="btn btn-danger btn-sm"
-                          onClick={() => void handleDeleteTrack(item.id)}
-                        >
-                          Confirmar
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-ghost btn-sm"
-                          onClick={() => setConfirmDeleteId(null)}
-                        >
-                          Cancelar
-                        </button>
-                      </>
-                    ) : (
-                      <button
-                        type="button"
-                        className="btn btn-danger-outline btn-sm"
-                        disabled={!isAuthenticated}
-                        onClick={() => setConfirmDeleteId(item.id)}
-                      >
-                        Remover
-                      </button>
+                return (
+                  <div key={item.id} className="catalog-row-wrapper">
+                    <div className="catalog-row">
+                      <div className="catalog-row-info">
+                        <strong>{item.track}</strong>
+                        <span className="catalog-artist"> — {item.artist}</span>
+                        <div className="catalog-tags">
+                          {item.tags.map((tag) => (
+                            <span key={tag} className="tag-pill">
+                              {TAG_LABELS[tag] ?? tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="catalog-row-actions">
+                        {confirmDeleteId === item.id ? (
+                          <>
+                            <button
+                              type="button"
+                              className="btn btn-danger btn-sm"
+                              onClick={() => void handleDeleteTrack(item.id)}
+                            >
+                              Confirmar
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-ghost btn-sm"
+                              onClick={() => setConfirmDeleteId(null)}
+                            >
+                              Cancelar
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              className="btn btn-ghost btn-sm"
+                              disabled={!isAuthenticated || isSavingEdit}
+                              onClick={() =>
+                                isEditing
+                                  ? setEditingTrackId(null)
+                                  : handleStartEdit(item)
+                              }
+                            >
+                              {isEditing ? 'Fechar edição' : 'Editar'}
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-danger-outline btn-sm"
+                              disabled={!isAuthenticated || isSavingEdit}
+                              onClick={() => setConfirmDeleteId(item.id)}
+                            >
+                              Remover
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    {isEditing && (
+                      <div className="catalog-edit-panel">
+                        <div className="catalog-edit-controls">
+                          <label className="edit-inline-field">
+                            <span>Idioma</span>
+                            <select
+                              aria-label={`Editar idioma de ${item.track}`}
+                              className="desk-select"
+                              value={editLang}
+                              onChange={(e) =>
+                                setEditLang(e.target.value as SongLanguage)
+                              }
+                            >
+                              <option value="pt">Português</option>
+                              <option value="en">Inglês</option>
+                              <option value="es">Espanhol</option>
+                            </select>
+                          </label>
+
+                          <label className="edit-inline-field">
+                            <span>Década</span>
+                            <select
+                              aria-label={`Editar década de ${item.track}`}
+                              className="desk-select"
+                              value={editDecade}
+                              onChange={(e) =>
+                                setEditDecade(e.target.value as DecadeTag | '')
+                              }
+                            >
+                              <option value="">Sem década</option>
+                              {DECADE_TAGS.map((dec) => (
+                                <option key={dec} value={dec}>
+                                  {TAG_LABELS[dec]}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+
+                          <div className="tags-inline">
+                            {STYLE_TAGS.map((styleTag) => (
+                              <label key={styleTag} className="tag-check">
+                                <input
+                                  type="checkbox"
+                                  checked={editStyleTags.includes(styleTag)}
+                                  onChange={() =>
+                                    setEditStyleTags((prev) =>
+                                      toggleStyleInList(prev, styleTag)
+                                    )
+                                  }
+                                />
+                                {TAG_LABELS[styleTag]}
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="catalog-edit-actions">
+                          <button
+                            type="button"
+                            className="btn btn-primary btn-sm"
+                            disabled={isSavingEdit}
+                            onClick={() => void handleSaveEdit(item.id)}
+                          >
+                            {isSavingEdit ? 'Salvando...' : 'Salvar alterações'}
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-ghost btn-sm"
+                            disabled={isSavingEdit}
+                            onClick={() => setEditingTrackId(null)}
+                          >
+                            Cancelar
+                          </button>
+                        </div>
+                      </div>
                     )}
                   </div>
-                </div>
-              ))
+                );
+              })
             )}
           </div>
         </section>

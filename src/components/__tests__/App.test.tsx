@@ -46,7 +46,16 @@ describe('Complete a Música App integration', () => {
 
     const input = await screen.findByLabelText(/Digite uma palavra da música/i);
     expect(input).toBeEnabled();
-    expect(screen.getByRole('button', { name: 'Espanhol' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Português' })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('button', { name: 'Inglês' })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('button', { name: 'Rock & Pop' })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('button', { name: 'Espanhol' })).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByRole('button', { name: 'Rap' })).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByRole('button', { name: 'Seleção dos Criadores' })).toHaveAttribute(
+      'aria-pressed',
+      'false'
+    );
+    expect(screen.getByRole('button', { name: 'Anos 80' })).toHaveAttribute('aria-pressed', 'false');
 
     // Title and artist must not be exposed
     expect(screen.queryByText(/Música Secreta Teste/i)).not.toBeInTheDocument();
@@ -224,5 +233,22 @@ describe('Complete a Música App integration', () => {
 
     await user.click(toggleBtn);
     expect(document.documentElement.dataset.theme).toBe('light');
+  });
+
+  it('allows multi-select across categories and shows Aplicar e Sortear', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await screen.findByLabelText(/Digite uma palavra da música/i);
+
+    const esBtn = screen.getByRole('button', { name: 'Espanhol' });
+    const rapBtn = screen.getByRole('button', { name: 'Rap' });
+
+    await user.click(esBtn);
+    await user.click(rapBtn);
+
+    expect(esBtn).toHaveAttribute('aria-pressed', 'true');
+    expect(rapBtn).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('button', { name: /Aplicar e Sortear/i })).toBeEnabled();
   });
 });

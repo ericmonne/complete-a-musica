@@ -5,7 +5,23 @@ import http from 'node:http';
 import path from 'node:path';
 import { canonicalSongKey, normalizeWord, stripEditionSuffix } from './catalogUtils.mjs';
 
-const ALLOWED_TAGS = new Set(['pt', 'en', 'es', 'rock_pop', 'classics']);
+const ALLOWED_TAGS = new Set([
+  'pt',
+  'en',
+  'es',
+  'rock_pop',
+  'rap',
+  'classics',
+  'creators_pick',
+  '60s_before',
+  '70s',
+  '80s',
+  '90s',
+  '2000s',
+  '2010s',
+  '2020s',
+]);
+const LANGUAGE_TAGS = new Set(['pt', 'en', 'es']);
 const MAX_BODY_BYTES = 64 * 1024;
 
 const MIME_TYPES = {
@@ -21,7 +37,7 @@ const MIME_TYPES = {
 
 function setApiCorsHeaders(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
   res.setHeader(
     'Access-Control-Allow-Headers',
     'Content-Type, Authorization, X-Admin-Key'
@@ -292,6 +308,79 @@ export function createCatalogServer({ catalogPath, adminKey, staticDir }) {
           }
 
           sendJson(res, 201, { track: result.created, total: result.total });
+          return;
+        }
+
+        if (method === 'PATCH' && pathname.startsWith('/api/catalog/')) {
+          if (!isAuthorized(req)) {
+            sendJson(res, 401, {
+              error: 'Não autorizado. Use o aplicativo Desktop com uma chave válida.',
+            });
+            return;
+          }
+
+          const targetId = decodeURIComponent(pathname.slice('/api/catalog/'.length));
+          if (!targetId) {
+            sendJson(res, 400, { error: 'ID inválido.' });
+            return;
+          }
+
+          let body;
+          try {
+            body = await readJsonBody(req);
+          } catch (err) {
+            if (err instanceof Error && err.message === 'PAYLOAD_TOO_LARGE') {
+              sendJson(res, 413, { error: 'Payload muito grande.' });
+              return;
+            }
+            sendJson(res, 400, { error: 'JSON inválido.' });
+            return;
+          }
+
+          const requestedLang =
+            body.lang === 'pt' || body.lang === 'en' || body.lang === 'es'
+              ? body.lang
+              : null;
+
+          if (body.lang !== undefined && !requestedLang) {
+            sendJson(res, 400, { error: 'Idioma inválido (use pt, en ou es).' });
+            return;
+          }
+
+          const result = await withWriteLock(async () => {
+            const tracks = await readCatalog();
+            const idx = tracks.findIndex((item) => item.id === targetId);
+            if (idx === -1) {
+              return { status: 404 };
+            }
+
+            const existing = tracks[idx];
+            const nextLang = requestedLang || existing.lang;
+            const rawTags = Array.isArray(body.tags) ? body.tags : existing.tags || [];
+            const filteredTags = rawTags.filter(
+              (tag) =>
+                typeof tag === 'string' &&
+                ALLOWED_TAGS.has(tag) &&
+                !LANGUAGE_TAGS.has(tag)
+            );
+            const nextTags = Array.from(new Set([nextLang, ...filteredTags]));
+
+            const updated = {
+              ...existing,
+              lang: nextLang,
+              tags: nextTags,
+            };
+            const nextTracks = tracks.map((item, i) => (i === idx ? updated : item));
+            await writeCatalog(nextTracks);
+            return { status: 200, updated, total: nextTracks.length };
+          });
+
+          if (result.status === 404) {
+            sendJson(res, 404, { error: 'Música não encontrada no catálogo.' });
+            return;
+          }
+
+          sendJson(res, 200, { track: result.updated, total: result.total });
           return;
         }
 

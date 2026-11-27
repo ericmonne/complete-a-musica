@@ -1,13 +1,22 @@
 import { FormEvent, useState } from 'react';
-import { CATEGORIES } from '../services/seedCatalog';
-import { CategoryId, ThemeMode } from '../types/game';
+import {
+  areFilterSetsEqual,
+  DEFAULT_FILTER_TAGS,
+  FILTER_GROUPS,
+} from '../engine/catalogFilter';
+import { FilterTag, ThemeMode } from '../types/game';
 
 interface HeaderProps {
-  category: CategoryId;
+  selectedTags: FilterTag[];
+  hasPendingFilterChanges: boolean;
+  matchingSongCount: number | null;
   activeArtist: string | null;
   theme: ThemeMode;
   isLoading: boolean;
-  onSelectCategory: (category: CategoryId) => void;
+  onToggleTag: (tag: FilterTag) => void;
+  onSelectAll: () => void;
+  onResetDefaultFilters: () => void;
+  onApplyFilters: () => void;
   onDrawByArtist: (artist: string) => void;
   onClearArtistMode: () => void;
   onNewSong: () => void;
@@ -15,11 +24,16 @@ interface HeaderProps {
 }
 
 export function Header({
-  category,
+  selectedTags,
+  hasPendingFilterChanges,
+  matchingSongCount,
   activeArtist,
   theme,
   isLoading,
-  onSelectCategory,
+  onToggleTag,
+  onSelectAll,
+  onResetDefaultFilters,
+  onApplyFilters,
   onDrawByArtist,
   onClearArtistMode,
   onNewSong,
@@ -33,6 +47,9 @@ export function Header({
     if (!trimmed || isLoading) return;
     onDrawByArtist(trimmed);
   };
+
+  const isAllSelected = selectedTags.length === 0;
+  const isDefaultSelected = areFilterSetsEqual(selectedTags, DEFAULT_FILTER_TAGS);
 
   return (
     <header className="app-header">
@@ -54,7 +71,7 @@ export function Header({
             type="button"
             className="btn btn-secondary"
             onClick={onNewSong}
-            disabled={isLoading}
+            disabled={isLoading || (!activeArtist && matchingSongCount === 0)}
             aria-label={
               activeArtist
                 ? `Sortear outra música de ${activeArtist}`
@@ -77,45 +94,104 @@ export function Header({
         </div>
       </div>
 
-      <div className="header-filters">
-        <nav className="category-bar" aria-label="Categorias de músicas">
-          {CATEGORIES.map((cat) => (
+      <div className="filter-panel" aria-label="Filtros de músicas">
+        <div className="filter-toolbar">
+          <div className="filter-quick-actions">
             <button
-              key={cat.id}
               type="button"
-              className={`category-pill${
-                !activeArtist && category === cat.id ? ' active' : ''
-              }`}
-              onClick={() => onSelectCategory(cat.id)}
+              className={`category-pill${!activeArtist && isAllSelected ? ' active' : ''}`}
+              onClick={onSelectAll}
               disabled={isLoading}
-              aria-pressed={!activeArtist && category === cat.id}
+              aria-pressed={!activeArtist && isAllSelected}
             >
-              {cat.label}
+              Todas
             </button>
-          ))}
-        </nav>
 
-        <form className="artist-form" onSubmit={handleSubmitArtist}>
-          <label htmlFor="artist-draw-input" className="sr-only">
-            Nome do artista ou banda para sorteio
-          </label>
-          <input
-            id="artist-draw-input"
-            type="text"
-            className="artist-input"
-            value={artistInput}
-            onChange={(e) => setArtistInput(e.target.value)}
-            placeholder="Sortear por artista/banda (ex: Djavan)..."
-            disabled={isLoading}
-          />
-          <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={isLoading || !artistInput.trim()}
-          >
-            Sortear Artista
-          </button>
-        </form>
+            {!isDefaultSelected && (
+              <button
+                type="button"
+                className="btn btn-ghost btn-sm"
+                onClick={onResetDefaultFilters}
+                disabled={isLoading}
+              >
+                Padrão (Rock &amp; Pop · PT/EN)
+              </button>
+            )}
+
+            {matchingSongCount !== null && (
+              <span
+                className={`filter-count-pill${
+                  matchingSongCount === 0 ? ' empty' : ''
+                }`}
+              >
+                {matchingSongCount}{' '}
+                {matchingSongCount === 1 ? 'música no filtro' : 'músicas no filtro'}
+              </span>
+            )}
+
+            {hasPendingFilterChanges && (
+              <button
+                type="button"
+                className="btn btn-primary btn-sm"
+                onClick={onApplyFilters}
+                disabled={isLoading || matchingSongCount === 0}
+              >
+                Aplicar e Sortear
+              </button>
+            )}
+          </div>
+
+          <form className="artist-form" onSubmit={handleSubmitArtist}>
+            <label htmlFor="artist-draw-input" className="sr-only">
+              Nome do artista ou banda para sorteio
+            </label>
+            <input
+              id="artist-draw-input"
+              type="text"
+              className="artist-input"
+              value={artistInput}
+              onChange={(e) => setArtistInput(e.target.value)}
+              placeholder="Sortear por artista/banda (ex: Djavan)..."
+              disabled={isLoading}
+            />
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={isLoading || !artistInput.trim()}
+            >
+              Sortear Artista
+            </button>
+          </form>
+        </div>
+
+        <div className="filter-groups">
+          {FILTER_GROUPS.map((group) => (
+            <div key={group.id} className="filter-group-row">
+              <span className="filter-group-label">{group.label}:</span>
+              <div
+                className="category-bar"
+                role="group"
+                aria-label={group.label}
+              >
+                {group.options.map((opt) => {
+                  const isActive = !activeArtist && selectedTags.includes(opt.id);
+                  return (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      className={`category-pill${isActive ? ' active' : ''}`}
+                      onClick={() => onToggleTag(opt.id)}
+                      disabled={isLoading}
+                      aria-pressed={isActive}
+                    >
+                      {opt.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {activeArtist && (

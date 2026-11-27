@@ -1,12 +1,18 @@
 import {
+  ALL_FILTER_TAGS,
+  LANGUAGE_TAGS,
+} from '../engine/catalogFilter';
+import {
   canonicalSongKey,
   normalizeWord,
   stripEditionSuffix,
 } from '../engine/normalize';
-import { CatalogTrack, CategoryId, SongLanguage } from '../types/game';
+import { CatalogTrack, FilterTag, SongLanguage } from '../types/game';
 
 const GITHUB_API_BASE = 'https://api.github.com';
 const CATALOG_FILE_PATH = 'public/catalog.json';
+const ALLOWED_TAG_SET = new Set<string>(ALL_FILTER_TAGS);
+const LANGUAGE_TAG_SET = new Set<string>(LANGUAGE_TAGS);
 
 export class GitHubAuthError extends Error {
   constructor(message: string) {
@@ -52,7 +58,20 @@ export interface AddTrackInput {
   artist: string;
   track: string;
   lang: SongLanguage;
-  tags: Exclude<CategoryId, 'all'>[];
+  tags: FilterTag[];
+}
+
+export interface UpdateTrackInput {
+  lang: SongLanguage;
+  tags: FilterTag[];
+}
+
+function normalizeTrackTags(lang: SongLanguage, rawTags: readonly FilterTag[]): FilterTag[] {
+  const nonLang = rawTags.filter(
+    (tag): tag is FilterTag =>
+      ALLOWED_TAG_SET.has(tag) && !LANGUAGE_TAG_SET.has(tag)
+  );
+  return Array.from(new Set<FilterTag>([lang, ...nonLang]));
 }
 
 export function findDuplicateTrack(
@@ -242,6 +261,76 @@ export async function verifyAndFetchGitHubCatalog(params: {
   };
 }
 
+async function runWithGitHubCatalogRetry<T>(
+  params: { repoInput: string; branch?: string; token: string },
+  transform: (
+    snapshot: GitHubCatalogSnapshot
+  ) => { nextTracks: CatalogTrack[]; commitMessage: string; resultValue: T }
+): Promise<T & { tracks: CatalogTrack[]; branch: string; repoSlug: string }> {
+  const parsed = parseGitHubRepo(params.repoInput);
+  if (!parsed) {
+    throw new GitHubNotFoundError('Repositório GitHub inválido.');
+  }
+
+  const { owner, repo } = parsed;
+  const headers = {
+    ...buildGitHubHeaders(params.token),
+    'Content-Type': 'application/json',
+  };
+
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const snapshot = await verifyAndFetchGitHubCatalog(params);
+    const { nextTracks, commitMessage, resultValue } = transform(snapshot);
+    const encodedContent = encodeBase64Utf8(
+      JSON.stringify(nextTracks, null, 2) + '\n'
+    );
+
+    const putRes = await fetch(
+      `${GITHUB_API_BASE}/repos/${owner}/${repo}/contents/${CATALOG_FILE_PATH}`,
+      {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify({
+          message: commitMessage,
+          content: encodedContent,
+          ...(snapshot.sha ? { sha: snapshot.sha } : {}),
+          branch: snapshot.branch,
+        }),
+      }
+    );
+
+    if (putRes.status === 409 && attempt === 0) {
+      continue;
+    }
+
+    if (putRes.status === 401 || putRes.status === 403) {
+      throw new GitHubAuthError(
+        'Token sem permissão de escrita em Contents (Read and write).'
+      );
+    }
+
+    if (!putRes.ok) {
+      const errBody = (await putRes.json().catch(() => ({}))) as {
+        message?: string;
+      };
+      throw new GitHubCatalogError(
+        errBody.message || `Falha ao atualizar catálogo no GitHub (HTTP ${putRes.status}).`
+      );
+    }
+
+    return {
+      ...resultValue,
+      tracks: nextTracks,
+      branch: snapshot.branch,
+      repoSlug: snapshot.repoSlug,
+    };
+  }
+
+  throw new GitHubCatalogError(
+    'Conflito de versão ao atualizar o catálogo no GitHub. Tente novamente.'
+  );
+}
+
 export async function addTrackToGitHubCatalog(params: {
   repoInput: string;
   branch?: string;
@@ -253,11 +342,6 @@ export async function addTrackToGitHubCatalog(params: {
   branch: string;
   repoSlug: string;
 }> {
-  const parsed = parseGitHubRepo(params.repoInput);
-  if (!parsed) {
-    throw new GitHubNotFoundError('Repositório GitHub inválido.');
-  }
-
   const rawArtist = params.payload.artist.trim();
   const cleanedTrack = stripEditionSuffix(params.payload.track.trim());
   if (!normalizeWord(rawArtist) || !normalizeWord(cleanedTrack)) {
@@ -266,19 +350,7 @@ export async function addTrackToGitHubCatalog(params: {
     );
   }
 
-  const { owner, repo } = parsed;
-  const headers = {
-    ...buildGitHubHeaders(params.token),
-    'Content-Type': 'application/json',
-  };
-
-  for (let attempt = 0; attempt < 2; attempt++) {
-    const snapshot = await verifyAndFetchGitHubCatalog({
-      repoInput: params.repoInput,
-      branch: params.branch,
-      token: params.token,
-    });
-
+  return runWithGitHubCatalogRetry(params, (snapshot) => {
     const duplicate = findDuplicateTrack(
       snapshot.tracks,
       rawArtist,
@@ -293,59 +365,53 @@ export async function addTrackToGitHubCatalog(params: {
       artist: rawArtist,
       track: cleanedTrack,
       lang: params.payload.lang,
-      tags: Array.from(new Set([params.payload.lang, ...params.payload.tags])),
+      tags: normalizeTrackTags(params.payload.lang, params.payload.tags),
       addedAt: new Date().toISOString(),
     };
 
-    const nextTracks = [...snapshot.tracks, created];
-    const encodedContent = encodeBase64Utf8(
-      JSON.stringify(nextTracks, null, 2) + '\n'
+    return {
+      nextTracks: [...snapshot.tracks, created],
+      commitMessage: `chore(catalog): adicionar ${rawArtist} - ${cleanedTrack}`,
+      resultValue: { track: created },
+    };
+  });
+}
+
+export async function updateTrackInGitHubCatalog(params: {
+  repoInput: string;
+  branch?: string;
+  token: string;
+  id: string;
+  updates: UpdateTrackInput;
+}): Promise<{
+  track: CatalogTrack;
+  tracks: CatalogTrack[];
+  branch: string;
+  repoSlug: string;
+}> {
+  return runWithGitHubCatalogRetry(params, (snapshot) => {
+    const idx = snapshot.tracks.findIndex((t) => t.id === params.id);
+    if (idx === -1) {
+      throw new GitHubNotFoundError('Música não encontrada no catálogo.');
+    }
+
+    const target = snapshot.tracks[idx];
+    const updated: CatalogTrack = {
+      ...target,
+      lang: params.updates.lang,
+      tags: normalizeTrackTags(params.updates.lang, params.updates.tags),
+    };
+
+    const nextTracks = snapshot.tracks.map((item, i) =>
+      i === idx ? updated : item
     );
-
-    const putRes = await fetch(
-      `${GITHUB_API_BASE}/repos/${owner}/${repo}/contents/${CATALOG_FILE_PATH}`,
-      {
-        method: 'PUT',
-        headers,
-        body: JSON.stringify({
-          message: `chore(catalog): adicionar ${rawArtist} - ${cleanedTrack}`,
-          content: encodedContent,
-          ...(snapshot.sha ? { sha: snapshot.sha } : {}),
-          branch: snapshot.branch,
-        }),
-      }
-    );
-
-    if (putRes.status === 409 && attempt === 0) {
-      continue;
-    }
-
-    if (putRes.status === 401 || putRes.status === 403) {
-      throw new GitHubAuthError(
-        'Token sem permissão de escrita em Contents (Read and write).'
-      );
-    }
-
-    if (!putRes.ok) {
-      const errBody = (await putRes.json().catch(() => ({}))) as {
-        message?: string;
-      };
-      throw new GitHubCatalogError(
-        errBody.message || `Falha ao salvar no GitHub (HTTP ${putRes.status}).`
-      );
-    }
 
     return {
-      track: created,
-      tracks: nextTracks,
-      branch: snapshot.branch,
-      repoSlug: snapshot.repoSlug,
+      nextTracks,
+      commitMessage: `chore(catalog): atualizar tags de ${target.artist} - ${target.track}`,
+      resultValue: { track: updated },
     };
-  }
-
-  throw new GitHubCatalogError(
-    'Conflito de versão ao atualizar o catálogo no GitHub. Tente novamente.'
-  );
+  });
 }
 
 export async function removeTrackFromGitHubCatalog(params: {
@@ -358,75 +424,16 @@ export async function removeTrackFromGitHubCatalog(params: {
   branch: string;
   repoSlug: string;
 }> {
-  const parsed = parseGitHubRepo(params.repoInput);
-  if (!parsed) {
-    throw new GitHubNotFoundError('Repositório GitHub inválido.');
-  }
-
-  const { owner, repo } = parsed;
-  const headers = {
-    ...buildGitHubHeaders(params.token),
-    'Content-Type': 'application/json',
-  };
-
-  for (let attempt = 0; attempt < 2; attempt++) {
-    const snapshot = await verifyAndFetchGitHubCatalog({
-      repoInput: params.repoInput,
-      branch: params.branch,
-      token: params.token,
-    });
-
+  return runWithGitHubCatalogRetry(params, (snapshot) => {
     const target = snapshot.tracks.find((t) => t.id === params.id);
     if (!target) {
       throw new GitHubNotFoundError('Música não encontrada no catálogo.');
     }
 
-    const nextTracks = snapshot.tracks.filter((t) => t.id !== params.id);
-    const encodedContent = encodeBase64Utf8(
-      JSON.stringify(nextTracks, null, 2) + '\n'
-    );
-
-    const putRes = await fetch(
-      `${GITHUB_API_BASE}/repos/${owner}/${repo}/contents/${CATALOG_FILE_PATH}`,
-      {
-        method: 'PUT',
-        headers,
-        body: JSON.stringify({
-          message: `chore(catalog): remover ${target.artist} - ${target.track}`,
-          content: encodedContent,
-          ...(snapshot.sha ? { sha: snapshot.sha } : {}),
-          branch: snapshot.branch,
-        }),
-      }
-    );
-
-    if (putRes.status === 409 && attempt === 0) {
-      continue;
-    }
-
-    if (putRes.status === 401 || putRes.status === 403) {
-      throw new GitHubAuthError(
-        'Token sem permissão de escrita em Contents (Read and write).'
-      );
-    }
-
-    if (!putRes.ok) {
-      const errBody = (await putRes.json().catch(() => ({}))) as {
-        message?: string;
-      };
-      throw new GitHubCatalogError(
-        errBody.message || `Falha ao remover no GitHub (HTTP ${putRes.status}).`
-      );
-    }
-
     return {
-      tracks: nextTracks,
-      branch: snapshot.branch,
-      repoSlug: snapshot.repoSlug,
+      nextTracks: snapshot.tracks.filter((t) => t.id !== params.id),
+      commitMessage: `chore(catalog): remover ${target.artist} - ${target.track}`,
+      resultValue: {},
     };
-  }
-
-  throw new GitHubCatalogError(
-    'Conflito de versão ao atualizar o catálogo no GitHub. Tente novamente.'
-  );
+  });
 }

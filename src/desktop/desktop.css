@@ -357,9 +357,57 @@ body {
 
 .tags-inline {
   display: flex;
-  gap: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.85rem;
   align-items: center;
-  padding-top: 0.3rem;
+  padding-top: 0.2rem;
+}
+
+.catalog-row-wrapper {
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-page);
+  overflow: hidden;
+}
+
+.catalog-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.8rem;
+}
+
+.catalog-edit-panel {
+  padding: 0.7rem 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.catalog-edit-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.edit-inline-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.catalog-edit-actions {
+  display: flex;
+  gap: 0.45rem;
 }
 
 .tag-check {
@@ -397,19 +445,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  max-height: 360px;
+  max-height: 440px;
   overflow-y: auto;
-}
-
-.catalog-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.55rem 0.8rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-page);
 }
 
 .catalog-row-info {

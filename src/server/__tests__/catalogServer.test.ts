@@ -221,4 +221,53 @@ describe('Catalog API Server & Duplicate Prevention', () => {
     expect(body.removed).toBe(true);
     expect(body.total).toBe(0);
   });
+
+  it('supports rap, creators_pick, and decade tags plus PATCH /api/catalog/:id', async () => {
+    const rapRes = await fetch(`${baseUrl}/api/catalog`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${ADMIN_KEY}`,
+      },
+      body: JSON.stringify({
+        artist: 'Sabotage',
+        track: 'Um Bom Lugar',
+        lang: 'pt',
+        tags: ['pt', 'rap', 'creators_pick', '2000s'],
+      }),
+    });
+    expect(rapRes.status).toBe(201);
+
+    const unauthPatch = await fetch(
+      `${baseUrl}/api/catalog/sabotage::umbomlugar`,
+      {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lang: 'pt', tags: ['pt', 'rap', 'classics', '2000s'] }),
+      }
+    );
+    expect(unauthPatch.status).toBe(401);
+
+    const authPatch = await fetch(
+      `${baseUrl}/api/catalog/sabotage::umbomlugar`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${ADMIN_KEY}`,
+        },
+        body: JSON.stringify({
+          lang: 'pt',
+          tags: ['pt', 'rap', 'classics', 'creators_pick', '2000s'],
+        }),
+      }
+    );
+    expect(authPatch.status).toBe(200);
+    const updated = (await authPatch.json()) as {
+      track: { tags: string[] };
+    };
+    expect(updated.track.tags).toContain('rap');
+    expect(updated.track.tags).toContain('creators_pick');
+    expect(updated.track.tags).toContain('2000s');
+  });
 });

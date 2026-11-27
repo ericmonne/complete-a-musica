@@ -1,6 +1,19 @@
 export type SongLanguage = 'pt' | 'en' | 'es';
 
-export type CategoryId = 'all' | 'pt' | 'en' | 'es' | 'rock_pop' | 'classics';
+export type StyleTag = 'rock_pop' | 'rap' | 'classics' | 'creators_pick';
+
+export type DecadeTag =
+  | '60s_before'
+  | '70s'
+  | '80s'
+  | '90s'
+  | '2000s'
+  | '2010s'
+  | '2020s';
+
+export type FilterTag = SongLanguage | StyleTag | DecadeTag;
+
+export type CategoryId = 'all' | FilterTag;
 
 export type ThemeMode = 'light' | 'dark';
 
@@ -43,7 +56,7 @@ export interface SeedTrack {
   artist: string;
   track: string;
   lang: SongLanguage;
-  tags: Exclude<CategoryId, 'all'>[];
+  tags: FilterTag[];
 }
 
 export interface CatalogTrack extends SeedTrack {

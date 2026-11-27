@@ -8,6 +8,7 @@ import {
   GitHubAuthError,
   parseGitHubRepo,
   removeTrackFromGitHubCatalog,
+  updateTrackInGitHubCatalog,
   verifyAndFetchGitHubCatalog,
 } from '../githubCatalogClient';
 
@@ -195,6 +196,18 @@ describe('githubCatalogClient', () => {
     expect(putCalls).toBe(2);
     expect(result.tracks).toHaveLength(2);
     expect(result.track.track).toBe('Aquele Abraço');
+
+    // Updating tags calls PUT and persists new tags
+    const updated = await updateTrackInGitHubCatalog({
+      repoInput: 'user/repo',
+      token: 'ghp_valid',
+      id: 'legiaourbana::tempoperdido',
+      updates: {
+        lang: 'pt',
+        tags: ['pt', 'rock_pop', 'creators_pick', '80s'],
+      },
+    });
+    expect(updated.track.tags).toEqual(['pt', 'rock_pop', 'creators_pick', '80s']);
 
     // Removing a track calls PUT with filtered array
     const removed = await removeTrackFromGitHubCatalog({

@@ -4879,5 +4879,16 @@
       "2000s"
     ],
     "addedAt": "2026-11-27T14:39:04.478Z"
+  },
+  {
+    "id": "pitty::meadora",
+    "artist": "Pitty",
+    "track": "Me Adora",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop"
+    ],
+    "addedAt": "2026-11-27T15:04:02.527Z"
   }
 ]

@@ -14,6 +14,7 @@ export const STYLE_TAGS: readonly StyleTag[] = [
   'mpb',
   'sertanejo',
   'classics',
+  'soundtracks',
   'creators_pick',
 ];
 
@@ -43,7 +44,8 @@ export const TAG_LABELS: Record<FilterTag, string> = {
   rap: 'Rap',
   mpb: 'MPB',
   sertanejo: 'Sertanejo / Country',
-  classics: 'Clássicos & Trilhas',
+  classics: 'Clássicos',
+  soundtracks: 'Trilhas Sonoras',
   creators_pick: 'Seleção dos Criadores',
   '60s_before': 'Até anos 60',
   '70s': 'Anos 70',

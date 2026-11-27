@@ -6,6 +6,7 @@ export type StyleTag =
   | 'mpb'
   | 'sertanejo'
   | 'classics'
+  | 'soundtracks'
   | 'creators_pick';
 
 export type DecadeTag =

@@ -14,6 +14,7 @@ const ALLOWED_TAGS = new Set([
   'mpb',
   'sertanejo',
   'classics',
+  'soundtracks',
   'creators_pick',
   '60s_before',
   '70s',

@@ -42,7 +42,7 @@ export const TAG_LABELS: Record<FilterTag, string> = {
   rock_pop: 'Rock & Pop',
   rap: 'Rap',
   mpb: 'MPB',
-  sertanejo: 'Sertanejo',
+  sertanejo: 'Sertanejo / Country',
   classics: 'Clássicos & Trilhas',
   creators_pick: 'Seleção dos Criadores',
   '60s_before': 'Até anos 60',

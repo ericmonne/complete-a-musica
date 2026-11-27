@@ -1,4 +1,4 @@
-export type SongLanguage = 'pt' | 'en' | 'es' | 'it';
+export type SongLanguage = 'pt' | 'en' | 'es' | 'it' | 'ca';
 
 export type StyleTag =
   | 'rock_pop'

@@ -1365,7 +1365,8 @@
     "tags": [
       "en",
       "rock_pop",
-      "2020s"
+      "2020s",
+      "creators_pick"
     ],
     "addedAt": "2026-11-24T21:09:49.742Z"
   },
@@ -1377,7 +1378,8 @@
     "tags": [
       "en",
       "rock_pop",
-      "2020s"
+      "2020s",
+      "creators_pick"
     ],
     "addedAt": "2026-11-24T21:10:39.733Z"
   },
@@ -1609,7 +1611,8 @@
     "tags": [
       "en",
       "rock_pop",
-      "60s_before"
+      "60s_before",
+      "creators_pick"
     ],
     "addedAt": "2026-11-25T12:14:53.770Z"
   },
@@ -7365,5 +7368,1165 @@
       "2000s"
     ],
     "addedAt": "2026-11-27T18:43:01.785Z"
+  },
+  {
+    "id": "johnpaulwhite::youlostme",
+    "artist": "John Paul White",
+    "track": "You Lost Me",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "maneskin::tornaacasa",
+    "artist": "Måneskin",
+    "track": "Torna a casa",
+    "lang": "it",
+    "tags": [
+      "it",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "davidcook::butyouwont",
+    "artist": "David Cook",
+    "track": "But You Won't",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "lucindawilliams::stillilongforyourkiss",
+    "artist": "Lucinda Williams",
+    "track": "Still I Long For Your Kiss",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "90s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "theheadandtheheart::shake",
+    "artist": "The Head And The Heart",
+    "track": "Shake",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "thebeatles::idontwanttospoiltheparty",
+    "artist": "The Beatles",
+    "track": "I Don't Want To Spoil The Party",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "60s_before"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "threedaysgrace::lostinyou",
+    "artist": "Three Days Grace",
+    "track": "Lost in You",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "ironwine::suchgreatheights",
+    "artist": "Iron & Wine",
+    "track": "Such Great Heights",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "athousandhorses::backtome",
+    "artist": "A Thousand Horses",
+    "track": "Back To Me",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "youmeatsix::give",
+    "artist": "You Me At Six",
+    "track": "Give",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "buckcherry::carousel",
+    "artist": "Buckcherry",
+    "track": "Carousel",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "adele::makeyoufeelmylove",
+    "artist": "Adele",
+    "track": "Make You Feel My Love",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "backstreetboys::10000promises",
+    "artist": "Backstreet Boys",
+    "track": "10.000 Promises",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "90s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "joynerlucas::10bands",
+    "artist": "Joyner Lucas",
+    "track": "10 Bands",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rap",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "danielsteinbock::13september",
+    "artist": "Daniel Steinbock",
+    "track": "13 September",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "madisonbeer::15minutes",
+    "artist": "Madison Beer",
+    "track": "15 MINUTES",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "morganwallen::7summers",
+    "artist": "Morgan Wallen",
+    "track": "7 Summers",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "salmo::90min",
+    "artist": "Salmo",
+    "track": "90MIN",
+    "lang": "it",
+    "tags": [
+      "it",
+      "rap",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "wyclefjean::911",
+    "artist": "Wyclef Jean",
+    "track": "911",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "rap",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "biffyclyro::915ths",
+    "artist": "Biffy Clyro",
+    "track": "9/15ths",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "biffyclyro::accidentwithoutemergency",
+    "artist": "Biffy Clyro",
+    "track": "Accident Without Emergency",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "nothingbutthieves::afterlife",
+    "artist": "Nothing But Thieves",
+    "track": "Afterlife",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "manel::aidolors",
+    "artist": "Manel",
+    "track": "Ai, Dolors",
+    "lang": "ca",
+    "tags": [
+      "ca",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "mariabethania::ambar",
+    "artist": "Maria Bethânia",
+    "track": "Âmbar",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "mpb",
+      "creators_pick",
+      "90s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "dirtysweet::americanspiritual",
+    "artist": "Dirty Sweet",
+    "track": "American Spiritual",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "jackingram::amirightoramarillo",
+    "artist": "Jack Ingram",
+    "track": "Am I Right or Amarillo",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "badbunny::amorfoda",
+    "artist": "Bad Bunny",
+    "track": "Amorfoda",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rap",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "nothingbutthieves::amsterdam",
+    "artist": "Nothing But Thieves",
+    "track": "Amsterdam",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "manel::aniversari",
+    "artist": "Manel",
+    "track": "Aniversari",
+    "lang": "ca",
+    "tags": [
+      "ca",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "incubus::annamolly",
+    "artist": "Incubus",
+    "track": "Anna Molly",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "cigarettesaftersex::apocalypse",
+    "artist": "Cigarettes After Sex",
+    "track": "Apocalypse",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "moptop::aondequerchegar",
+    "artist": "Moptop",
+    "track": "Aonde Quer Chegar?",
+    "lang": "pt",
+    "tags": [
+      "pt",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "negramaro::apollo11",
+    "artist": "Negramaro",
+    "track": "Apollo 11",
+    "lang": "it",
+    "tags": [
+      "it",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "zacbrownband::assheswalkingaway",
+    "artist": "Zac Brown Band",
+    "track": "As She's Walking Away",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "biffyclyro::asdustdances",
+    "artist": "Biffy Clyro",
+    "track": "As Dust Dances",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "tizianoferro::assurdopensare",
+    "artist": "Tiziano Ferro",
+    "track": "Assurdo Pensare",
+    "lang": "it",
+    "tags": [
+      "it",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "parkermillsap::atthebaremeraldcityblues",
+    "artist": "Parker Millsap",
+    "track": "At the Bar (Emerald City Blues)",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "kipmoore::backseat",
+    "artist": "Kip Moore",
+    "track": "Backseat",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "thesmiths::backtotheoldhouse",
+    "artist": "The Smiths",
+    "track": "Back to the Old House",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "80s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "timecop1983::backtoyou",
+    "artist": "Timecop1983",
+    "track": "Back to You",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "drivebytruckers::baggage",
+    "artist": "Drive-By Truckers",
+    "track": "Baggage",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "thedeadsouth::banjoodyssey",
+    "artist": "The Dead South",
+    "track": "Banjo Odyssey",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "filmore::barinbelize",
+    "artist": "FILMORE",
+    "track": "Bar In Belize",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "thebeatles::because",
+    "artist": "The Beatles",
+    "track": "Because",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "60s_before"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "marcomasini::bellastronza",
+    "artist": "Marco Masini",
+    "track": "Bella stronza",
+    "lang": "it",
+    "tags": [
+      "it",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "90s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "laurapausini::benedettapassione",
+    "artist": "Laura Pausini",
+    "track": "Benedetta passione",
+    "lang": "it",
+    "tags": [
+      "it",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "manel::benvolgut",
+    "artist": "Manel",
+    "track": "Benvolgut",
+    "lang": "ca",
+    "tags": [
+      "ca",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "taylorswift::betty",
+    "artist": "Taylor Swift",
+    "track": "betty",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "zephaniahohora::blackblue",
+    "artist": "Zephaniah OHora",
+    "track": "Black & Blue",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "blaumut::bicicletes",
+    "artist": "Blaumut",
+    "track": "Bicicletes",
+    "lang": "ca",
+    "tags": [
+      "ca",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "alannahmyles::blackvelvet",
+    "artist": "Alannah Myles",
+    "track": "Black Velvet",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "80s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "thebeatles::bluejayway",
+    "artist": "The Beatles",
+    "track": "Blue Jay Way",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "60s_before"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "fatsdomino::blueberryhill",
+    "artist": "Fats Domino",
+    "track": "Blueberry Hill",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "60s_before"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "keithurban::blueaintyourcolor",
+    "artist": "Keith Urban",
+    "track": "Blue Ain't Your Color",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "edsheeran::blow",
+    "artist": "Ed Sheeran",
+    "track": "BLOW",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "childishgambino::bonfire",
+    "artist": "Childish Gambino",
+    "track": "Bonfire",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rap",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "shakira::boigpertu",
+    "artist": "Shakira",
+    "track": "Boig per Tu",
+    "lang": "ca",
+    "tags": [
+      "ca",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "thestrokes::brooklynbridgetochorus",
+    "artist": "The Strokes",
+    "track": "Brooklyn Bridge To Chorus",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "floridageorgialine::bumpinthenight",
+    "artist": "Florida Georgia Line",
+    "track": "Bumpin' The Night",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "joshabbottband::brushycreek",
+    "artist": "Josh Abbott Band",
+    "track": "Brushy Creek",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "cam::burninghouse",
+    "artist": "Cam",
+    "track": "Burning House",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "kdlang::busybeingblue",
+    "artist": "k.d. lang",
+    "track": "Busy Being Blue",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "80s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "beachwoodsparks::byyourside",
+    "artist": "Beachwood Sparks",
+    "track": "By Your Side",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "dolobeltran::cancodelmatiencalmat",
+    "artist": "Dolo Beltran",
+    "track": "Cançó del Matí Encalmat",
+    "lang": "ca",
+    "tags": [
+      "ca",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "manel::captatiobenevolentiae",
+    "artist": "Manel",
+    "track": "Captatio benevolentiae",
+    "lang": "ca",
+    "tags": [
+      "ca",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "metric::cascades",
+    "artist": "Metric",
+    "track": "Cascades",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "jasonisbellandthe400unit::chaosandclothes",
+    "artist": "Jason Isbell and the 400 Unit",
+    "track": "Chaos and Clothes",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "morganwallen::chasinyou",
+    "artist": "Morgan Wallen",
+    "track": "Chasin' You",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "kennychesney::comeover",
+    "artist": "Kenny Chesney",
+    "track": "Come Over",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "parkermillsap::comebackwhenyoucantstay",
+    "artist": "Parker Millsap",
+    "track": "Come Back When You Can't Stay",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "keithurban::comebacktome",
+    "artist": "Keith Urban",
+    "track": "Come Back To Me",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "manel::corrandesdelaparellaestable",
+    "artist": "Manel",
+    "track": "Corrandes de la parella estable",
+    "lang": "ca",
+    "tags": [
+      "ca",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "biffyclyro::differentkindoflove",
+    "artist": "Biffy Clyro",
+    "track": "Different Kind of Love",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "soundtracks",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "eslabonarmado::ellabailasola",
+    "artist": "Eslabon Armado",
+    "track": "Ella Baila Sola",
+    "lang": "es",
+    "tags": [
+      "es",
+      "rock_pop",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "manel::enlaqueelbernatsettroba",
+    "artist": "Manel",
+    "track": "En la que el Bernat se't troba",
+    "lang": "ca",
+    "tags": [
+      "ca",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "afi::escapefromlosangeles",
+    "artist": "AFI",
+    "track": "Escape From Los Angeles",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "thetyets::epicsolete",
+    "artist": "The Tyets",
+    "track": "Èpic Solete",
+    "lang": "ca",
+    "tags": [
+      "ca",
+      "rock_pop",
+      "rap",
+      "creators_pick",
+      "2020s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "carlypearce::everylittlething",
+    "artist": "Carly Pearce",
+    "track": "Every Little Thing",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "paulmccartney::everynight",
+    "artist": "Paul McCartney",
+    "track": "Every Night",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "70s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "theglorioussons::everythingisalright",
+    "artist": "The Glorious Sons",
+    "track": "Everything Is Alright",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "buckcherry::everything",
+    "artist": "Buckcherry",
+    "track": "Everything",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "eliyoungband::everythingisyou",
+    "artist": "Eli Young Band",
+    "track": "Everything Is You",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "jeffbuckley::forgether",
+    "artist": "Jeff Buckley",
+    "track": "Forget Her",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "90s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "thebeatles::fornoone",
+    "artist": "The Beatles",
+    "track": "For No One",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "classics",
+      "creators_pick",
+      "60s_before"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "tizianoferro::fotografiedellatuaassenza",
+    "artist": "Tiziano Ferro",
+    "track": "Fotografie Della Tua Assenza",
+    "lang": "it",
+    "tags": [
+      "it",
+      "rock_pop",
+      "creators_pick",
+      "2000s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "curtismcmurtry::foxhole",
+    "artist": "Curtis McMurtry",
+    "track": "Foxhole",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "daftpunk::fragmentsoftime",
+    "artist": "Daft Punk",
+    "track": "Fragments of Time",
+    "lang": "en",
+    "tags": [
+      "en",
+      "rock_pop",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
+  },
+  {
+    "id": "timmcgraw::friendofafriend",
+    "artist": "Tim McGraw",
+    "track": "Friend Of A Friend",
+    "lang": "en",
+    "tags": [
+      "en",
+      "sertanejo",
+      "creators_pick",
+      "2010s"
+    ],
+    "addedAt": "2026-11-27T19:16:17.258Z"
   }
 ]

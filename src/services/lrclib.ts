@@ -99,6 +99,18 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 export function inferSongLanguage(cleanedLyrics: string): SongLanguage {
+  const hasPtExclusive = /[ãõ]/i.test(cleanedLyrics);
+  if (!hasPtExclusive) {
+    const catalanMatches = cleanedLyrics.match(
+      /\b(amb|això|però|perquè|també|només|aquest|aquesta|molt|quan|són|fins|sense|dels|pels|ets|som|sóc|tinc|està|avui|demà)\b/gi
+    );
+    if (
+      /l·l/i.test(cleanedLyrics) ||
+      (catalanMatches && catalanMatches.length >= 2)
+    ) {
+      return 'ca';
+    }
+  }
   if (
     /[ãõçêôà]/i.test(cleanedLyrics) ||
     /\b(você|não|coração|então|também|ninguém|alguém|minha)\b/i.test(cleanedLyrics)

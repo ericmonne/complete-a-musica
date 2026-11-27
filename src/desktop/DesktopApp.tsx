@@ -1037,6 +1037,7 @@ export function DesktopApp() {
                         <option value="en">Inglês</option>
                         <option value="es">Espanhol</option>
                         <option value="it">Italiano</option>
+                        <option value="ca">Catalão</option>
                       </select>
 
                       <select
@@ -1161,6 +1162,7 @@ export function DesktopApp() {
                     <option value="en">Inglês</option>
                     <option value="es">Espanhol</option>
                     <option value="it">Italiano</option>
+                    <option value="ca">Catalão</option>
                   </select>
                 </div>
 
@@ -1255,6 +1257,7 @@ export function DesktopApp() {
                   <option value="en">Inglês</option>
                   <option value="es">Espanhol</option>
                   <option value="it">Italiano</option>
+                  <option value="ca">Catalão</option>
                 </optgroup>
                 <optgroup label="Estilo / Coleção">
                   {STYLE_TAGS.map((styleTag) => (
@@ -1363,6 +1366,7 @@ export function DesktopApp() {
                               <option value="en">Inglês</option>
                               <option value="es">Espanhol</option>
                               <option value="it">Italiano</option>
+                              <option value="ca">Catalão</option>
                             </select>
                           </label>
 

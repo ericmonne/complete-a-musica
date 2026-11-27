@@ -10,6 +10,7 @@ const ALLOWED_TAGS = new Set([
   'en',
   'es',
   'it',
+  'ca',
   'rock_pop',
   'rap',
   'mpb',
@@ -25,7 +26,7 @@ const ALLOWED_TAGS = new Set([
   '2010s',
   '2020s',
 ]);
-const LANGUAGE_TAGS = new Set(['pt', 'en', 'es', 'it']);
+const LANGUAGE_TAGS = new Set(['pt', 'en', 'es', 'it', 'ca']);
 const MAX_BODY_BYTES = 64 * 1024;
 
 const MIME_TYPES = {
@@ -248,14 +249,15 @@ export function createCatalogServer({ catalogPath, adminKey, staticDir }) {
             body.lang === 'pt' ||
             body.lang === 'en' ||
             body.lang === 'es' ||
-            body.lang === 'it'
+            body.lang === 'it' ||
+            body.lang === 'ca'
               ? body.lang
               : null;
 
           if (!rawArtist || !rawTrack || !lang) {
             sendJson(res, 400, {
               error:
-                'Campos obrigatórios inválidos: informe artista, música e idioma (pt/en/es/it).',
+                'Campos obrigatórios inválidos: informe artista, música e idioma (pt/en/es/it/ca).',
             });
             return;
           }
@@ -348,12 +350,13 @@ export function createCatalogServer({ catalogPath, adminKey, staticDir }) {
             body.lang === 'pt' ||
             body.lang === 'en' ||
             body.lang === 'es' ||
-            body.lang === 'it'
+            body.lang === 'it' ||
+            body.lang === 'ca'
               ? body.lang
               : null;
 
           if (body.lang !== undefined && !requestedLang) {
-            sendJson(res, 400, { error: 'Idioma inválido (use pt, en, es ou it).' });
+            sendJson(res, 400, { error: 'Idioma inválido (use pt, en, es, it ou ca).' });
             return;
           }
 
